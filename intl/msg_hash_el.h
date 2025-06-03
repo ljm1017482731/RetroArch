@@ -552,10 +552,6 @@ MSG_HASH(
    "Κλείδωμα Εγκατεστημένου Πυρήνα"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Αποτροπή τροποποιήσεων του τρέχοντος εγκατεστημένου πυρήνα. Μπορεί να χρησιμοποιηθεί για αποφυγή ανεπιθύμητων ενημερώσεων όταν το περιεχόμενο απαιτεί συγκεκριμένη έκδοση πυρήνα (π.χ. Παιχνίδια Arcade)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_SET_STANDALONE_EXEMPT,
    "Εξαίρεση από το μενού 'Πυρήνες χωρίς περιεχόμενο'"
    )
@@ -1477,10 +1473,6 @@ MSG_HASH(
    "Χρήστης"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Αλλαγή ρυθμίσεων λογαριασμού, ονόματος χρήστη και γλώσσας."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Ευρετήρια"
    )
@@ -1535,10 +1527,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "Οδηγός Εισαγωγής"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Οδηγός εισόδου προς χρήση. Κάποιοι οδηγοί βίντεο εξαναγκάζουν έναν διαφορετικό οδηγό εισόδου."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
@@ -2225,13 +2213,14 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_BIND_HOLD,
    "Δευτερόλεπτα τα οποία χρειάζεται να κρατήσετε πατημένο κάποιο κουμπί μέχρι την σύνδεση του."
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "Πλήκτρο \"Turbo\""
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
    "Λειτουργία Turbo"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "Προκαθορισμένο Πλήκτρο για Τούρμπο"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_FIRE_SETTINGS,
@@ -2330,10 +2319,6 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_REWIND,
    "Επιστροφή"
    )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_PAUSE_TOGGLE,
-   "Εναλλάσσει εκτελούμενο περιεχόμενο μεταξύ καταστάσεων σε παύση και μη παύση."
-   )
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_VOLUME_UP,
@@ -2403,15 +2388,6 @@ MSG_HASH(
    "Υπηρεσία Τεχνητής Νοημοσύνης"
    )
 
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "Αποστολή Πληροφοριων Εκσφαλματωσης (Debuging)"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_SEND_DEBUG_INFO,
-   "Στέλνει διαγνωστικές πληροφορίες σχετικά με τη συσκευή σας και τις ρυθμίσεις του RetroArch στους διακομιστές μας για ανάλυση."
-   )
 
 /* Settings > Input > Port # Controls */
 
@@ -2579,10 +2555,6 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_LIGHTGUN_DPAD_RIGHT,
    "Όπλο D-pad Δεξιά"
    )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
-   "Ενεργοποίηση Turbo"
-   )
 
 /* Settings > Latency */
 
@@ -2706,12 +2678,16 @@ MSG_HASH(
    "Φιλτράρισμα άγνωστων επεκτάσεων"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_FILTER_BY_CURRENT_CORE,
+   "Φιλτράρισμα με βάση τον τρέχων πυρήνα"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_USE_BUILTIN_PLAYER,
    "Χρήση Ενσωματωμένου Αναπαραγωγέα Πολυμέσων Use Builtin Media Player"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_FILTER_BY_CURRENT_CORE,
-   "Φιλτράρισμα με βάση τον τρέχων πυρήνα"
+   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_IMAGE_VIEWER,
+   "Χρήση Ενσωματωμένου Προβολέα Εικόνων"
    )
 
 /* Settings > Frame Throttle */
@@ -3352,7 +3328,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Περιηγητής Αρχείων"
+   "Ευρετήριο έναρξης"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LIBRETRO_INFO_PATH,
@@ -3668,10 +3644,6 @@ MSG_HASH(
    "Συνέχιση"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_RESUME_CONTENT,
-   "Συνέχιση εκτέλεσης του τρέχοντος περιεχομένου και έξοδος από το Γρήγορο Μενού."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RESTART_CONTENT,
    "Επανεκκίνηση"
    )
@@ -3744,16 +3716,8 @@ MSG_HASH(
    "Επιλογές Πυρήνα"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_OPTIONS,
-   "Αλλαγή επιλογών για το τρέχον εκτελούμενο περιεχόμενο."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_INPUT_REMAPPING_OPTIONS,
    "Χειρισμοί"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_INPUT_REMAPPING_OPTIONS,
-   "Αλλαγή χειρισμών για το τρέχον εκτελούμενο περιεχόμενο."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_CHEAT_OPTIONS,
@@ -4571,6 +4535,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 MSG_HASH(
@@ -4991,10 +4957,6 @@ MSG_HASH(
    "Χρήστης"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_IMAGE_VIEWER,
-   "Χρήση Ενσωματωμένου Προβολέα Εικόνων"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_WAITABLE_SWAPCHAINS,
    "Σκληρός συγχρονισμός επεξεργαστή και κάρτας γραφικών. Μειώνει την καθυστέρηση με τίμημα την επίδοση."
    )
@@ -5014,20 +4976,12 @@ MSG_HASH(
 /* Unused (Only Exist in Translation Files) */
 
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_AUTO,
-   "Αυτόματη Αναλογία Οθόνης"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_STATUS,
    "Κατάσταση"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_BGM_ENABLE,
    "System BGM Enable"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CUSTOM_RATIO,
-   "Προτιμώμενη Αναλογία"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RECORD_ENABLE,
@@ -5040,18 +4994,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RECORD_USE_OUTPUT_DIRECTORY,
    "Αποθήκευση Εγγραφών στο Ευρετήριο Εξαγωγής"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FORCE_ASPECT,
-   "Εξαναγκασμένη αναλογία απεικόνισης"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RESUME,
-   "Συνέχιση"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_RESUME,
-   "Συνέχιση εκτέλεσης του τρέχοντος περιεχομένου και έξοδος από το Γρήγορο Μενού."
    )
 MSG_HASH( /* FIXME Still exists in a comment about being removed */
    MENU_ENUM_LABEL_VALUE_MATERIALUI_MENU_FOOTER_OPACITY,
@@ -5092,14 +5034,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_HELP_LOADING_CONTENT,
    "Φόρτωση Περιεχομένου"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "Αποστολή Πληροφοριων Εκσφαλματωσης (Debuging)"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_HELP_SEND_DEBUG_INFO,
-   "Στέλνει διαγνωστικές πληροφορίες σχετικά με τη συσκευή σας και τις ρυθμίσεις του RetroArch στους διακομιστές μας για ανάλυση."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANAGEMENT,
@@ -5392,10 +5326,6 @@ MSG_HASH(
    "Αυτόματη ανίχνευση"
    )
 MSG_HASH(
-   MSG_AUTOLOADING_SAVESTATE_FROM,
-   "Αυτόματη φόρτωση κατάστασης αποθήκευσης από"
-   )
-MSG_HASH(
    MSG_CAPABILITIES,
    "Ικανότητες"
    )
@@ -5606,6 +5536,10 @@ MSG_HASH(
 MSG_HASH(
    MSG_VIEWPORT_SIZE_CALCULATION_FAILED,
    "Viewport size calculation failed! Will continue using raw data. This will probably not work right ..."
+   )
+MSG_HASH(
+   MSG_AUTOLOADING_SAVESTATE_FROM,
+   "Αυτόματη φόρτωση κατάστασης αποθήκευσης από"
    )
 MSG_HASH(
    MSG_DEVICE_CONFIGURED_IN_PORT,
@@ -5967,4 +5901,11 @@ MSG_HASH(
    )
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

@@ -175,13 +175,10 @@ static file_list_t *task_cloud_sync_create_manifest(RFILE *file)
    return list;
 }
 
-static void task_cloud_sync_manifest_filename(char *path, size_t len, bool server)
+static void task_cloud_sync_manifest_filename(char *s, size_t len, bool server)
 {
-   settings_t *settings             = config_get_ptr();
-   const char *path_dir_core_assets = settings->paths.directory_core_assets;
-
-   fill_pathname_join_special(path,
-         path_dir_core_assets,
+   const char *path_dir_core_assets = config_get_ptr()->paths.directory_core_assets;
+   fill_pathname_join_special(s, path_dir_core_assets,
          server ? MANIFEST_FILENAME_SERVER : MANIFEST_FILENAME_LOCAL,
          len);
 }
@@ -421,7 +418,7 @@ static void task_cloud_sync_build_current_manifest(task_cloud_sync_state_t *sync
 
    file_list_sort_on_alt(sync_state->current_manifest);
    sync_state->phase = CLOUD_SYNC_PHASE_DIFF;
-   RARCH_LOG(CSPFX "created in-memory manifest of current disk state\n");
+   RARCH_LOG(CSPFX "created in-memory manifest of current disk state with %d files\n", sync_state->current_manifest->size);
 }
 
 /**
@@ -525,8 +522,7 @@ static void task_cloud_sync_backup_file(struct item_file *file)
    char        new_dir[DIR_MAX_LENGTH];
    char        backup_dir[DIR_MAX_LENGTH];
    char        new_path[PATH_MAX_LENGTH];
-   settings_t *settings             = config_get_ptr();
-   const char *path_dir_core_assets = settings->paths.directory_core_assets;
+   const char *path_dir_core_assets = config_get_ptr()->paths.directory_core_assets;
    time_t      cur_time             = time(NULL);
    rtime_localtime(&cur_time, &tm_);
 
@@ -539,18 +535,30 @@ static void task_cloud_sync_backup_file(struct item_file *file)
                                     CS_FILE_KEY(file),
                                     sizeof(new_path));
    strftime(new_path + len, sizeof(new_path) - len, "-%y%m%d-%H%M%S", &tm_);
+   pathname_conform_slashes_to_os(new_path);
    fill_pathname_basedir(new_dir, new_path, sizeof(new_dir));
    path_mkdir(new_dir);
    filestream_rename(file->path, new_path);
 }
 
+typedef struct
+{
+   task_cloud_sync_state_t *sync_state;
+   struct item_file        *server_file;
+} task_cloud_sync_fetch_state_t;
+
 static void task_cloud_sync_fetch_cb(void *user_data, const char *path, bool success, RFILE *file)
 {
-   task_cloud_sync_state_t *sync_state = (task_cloud_sync_state_t *)user_data;
-   char                    *hash = NULL;
+   task_cloud_sync_fetch_state_t *fetch_state = (task_cloud_sync_fetch_state_t *)user_data;
+   task_cloud_sync_state_t       *sync_state;
+   struct item_file              *server_file;
+   char                          *hash = NULL;
 
-   if (!sync_state)
+   if (!fetch_state)
       return;
+
+   sync_state = fetch_state->sync_state;
+   server_file = fetch_state->server_file;
 
    if (success && file)
    {
@@ -558,6 +566,10 @@ static void task_cloud_sync_fetch_cb(void *user_data, const char *path, bool suc
       filestream_close(file);
       RARCH_LOG(CSPFX "successfully fetched %s\n", path);
       task_cloud_sync_add_to_updated_manifest(sync_state, path, hash, false);
+      task_cloud_sync_add_to_updated_manifest(sync_state, path, hash, true);
+      /* if the file fetched from the server does not match its own hash, the manifest needs to be updated */
+      if (!string_is_equal(hash, CS_FILE_HASH(server_file)))
+         sync_state->need_manifest_uploaded = true;
       sync_state->downloads++;
    }
    else
@@ -567,33 +579,43 @@ static void task_cloud_sync_fetch_cb(void *user_data, const char *path, bool suc
          RARCH_WARN(CSPFX "failed to fetch %s\n", path);
       else
          RARCH_WARN(CSPFX "failed to write file from server: %s\n", path);
+      task_cloud_sync_add_to_updated_manifest(sync_state, path, CS_FILE_HASH(server_file), true);
       sync_state->failures = true;
    }
 
    slock_lock(tcs_running_lock);
    sync_state->waiting--;
    slock_unlock(tcs_running_lock);
+
+   free(fetch_state);
 }
 
 static void task_cloud_sync_fetch_server_file(task_cloud_sync_state_t *sync_state)
 {
-   size_t              i;
-   char                filename[PATH_MAX_LENGTH];
-   char                directory[DIR_MAX_LENGTH];
-   struct string_list *dirlist     = task_cloud_sync_directory_map();
-   struct item_file   *server_file = &sync_state->server_manifest->list[sync_state->server_idx];
-   const char         *key         = CS_FILE_KEY(server_file);
-   const char         *path        = strchr(key, PATH_DEFAULT_SLASH_C()) + 1;
-   settings_t         *settings = config_get_ptr();
+   size_t                         i;
+   char                           filename[PATH_MAX_LENGTH];
+   char                           directory[DIR_MAX_LENGTH];
+   struct string_list            *dirlist     = task_cloud_sync_directory_map();
+   struct item_file              *server_file = &sync_state->server_manifest->list[sync_state->server_idx];
+   const char                    *key         = CS_FILE_KEY(server_file);
+   /* the key from the server file is in "portable" format, use '/' */
+   const char                    *path        = strchr(key, '/') + 1;
+   settings_t                    *settings    = config_get_ptr();
+   task_cloud_sync_fetch_state_t *fetch_state;
 
-   /* we're just fetching a file the server has, we can update this now */
-   task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
-   /* no need to mark need_manifest_uploaded, nothing changed */
+   /* there is a weird thing that can happen, where the server file changes but
+    * the manifest does not have the updated hash. in that case when the file is
+    * downloaded we have an opportunity to check that the hash matches and
+    * update the server manifest, and correct the issue. to do this the server
+    * manifest cannot be updated early; only on error or after the download is
+    * successful. on error just add to the updated manifest without marking
+    * need_manifest_uplaod. */
 
    if (task_cloud_sync_should_ignore_file(key))
    {
       /* don't fetch a file we're supposed to ignore, even if the server has it */
       RARCH_LOG(CSPFX "ignoring %s\n", key);
+      task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
       return;
    }
    RARCH_LOG(CSPFX "fetching %s\n", key);
@@ -604,12 +626,14 @@ static void task_cloud_sync_fetch_server_file(task_cloud_sync_state_t *sync_stat
       if (!string_starts_with(key, dirlist->elems[i].data))
          continue;
       fill_pathname_join_special(filename, dirlist->elems[i].userdata, path, sizeof(filename));
+      pathname_conform_slashes_to_os(filename);
       break;
    }
    if (string_is_empty(filename))
    {
       /* how did this end up here? we don't know where to put it... */
       RARCH_WARN(CSPFX "don't know where to put %s!\n", key);
+      task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
       return;
    }
 
@@ -622,12 +646,24 @@ static void task_cloud_sync_fetch_server_file(task_cloud_sync_state_t *sync_stat
 
    fill_pathname_basedir(directory, filename, sizeof(directory));
    path_mkdir(directory);
-   if (cloud_sync_read(key, filename, task_cloud_sync_fetch_cb, sync_state))
+   fetch_state = malloc(sizeof(task_cloud_sync_fetch_state_t));
+   if (!fetch_state)
+   {
+      RARCH_WARN(CSPFX "wanted to fetch %s but failed to malloc\n", key);
+      task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
+      sync_state->failures = true;
+      return;
+   }
+   fetch_state->sync_state  = sync_state;
+   fetch_state->server_file = server_file;
+   if (cloud_sync_read(key, filename, task_cloud_sync_fetch_cb, fetch_state))
       sync_state->waiting++;
    else
    {
       RARCH_WARN(CSPFX "wanted to fetch %s but failed\n", key);
+      task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
       sync_state->failures = true;
+      free(fetch_state);
    }
 }
 
@@ -740,12 +776,12 @@ static void task_cloud_sync_upload_current_file(task_cloud_sync_state_t *sync_st
 
 static void task_cloud_sync_delete_current_file(task_cloud_sync_state_t *sync_state)
 {
-   struct item_file *item     = &sync_state->current_manifest->list[sync_state->current_idx];
-   settings_t       *settings = config_get_ptr();
+   struct item_file *item      = &sync_state->current_manifest->list[sync_state->current_idx];
+   bool cloud_sync_destructive = config_get_ptr()->bools.cloud_sync_destructive;
 
    RARCH_WARN(CSPFX "server has deleted %s, so shall we\n", CS_FILE_KEY(item));
 
-   if (settings->bools.cloud_sync_destructive)
+   if (cloud_sync_destructive)
       filestream_delete(item->path);
    else
       task_cloud_sync_backup_file(item);
@@ -870,6 +906,49 @@ static void task_cloud_sync_delete_server_file(task_cloud_sync_state_t *sync_sta
    }
 }
 
+static void task_cloud_sync_maybe_ignore(task_cloud_sync_state_t *sync_state)
+{
+   struct string_list *dirlist = task_cloud_sync_directory_map();
+   size_t i;
+   bool found;
+
+   if (sync_state->local_manifest)
+   {
+      for (found = false; !found && sync_state->local_idx < sync_state->local_manifest->size; )
+      {
+         struct item_file *local_file  = &sync_state->local_manifest->list[sync_state->local_idx];
+         const char *key = CS_FILE_KEY(local_file);
+         for (i = 0; !found && i < dirlist->size; i++)
+            found = string_starts_with(key, dirlist->elems[i].data);
+         /* we have a record of doing a sync for this file but now no longer
+          * wish to sync it. keep the record? might as well, in case the option
+          * gets turned back on later. */
+         if (!found)
+         {
+            task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(local_file), false);
+            sync_state->local_idx++;
+         }
+      }
+   }
+
+   if (sync_state->server_manifest)
+   {
+      for (found = false; !found && sync_state->server_idx < sync_state->server_manifest->size; )
+      {
+         struct item_file *server_file  = &sync_state->server_manifest->list[sync_state->server_idx];
+         const char *key = CS_FILE_KEY(server_file);
+         for (i = 0; !found && i < dirlist->size; i++)
+            found = string_starts_with(key, dirlist->elems[i].data);
+         /* must keep the server's manifest complete */
+         if (!found)
+         {
+            task_cloud_sync_add_to_updated_manifest(sync_state, key, CS_FILE_HASH(server_file), true);
+            sync_state->server_idx++;
+         }
+      }
+   }
+}
+
 static void task_cloud_sync_diff_next(task_cloud_sync_state_t *sync_state)
 {
    int server_local_key_cmp;
@@ -878,6 +957,12 @@ static void task_cloud_sync_diff_next(task_cloud_sync_state_t *sync_state)
    struct item_file *server_file  = NULL;
    struct item_file *local_file   = NULL;
    struct item_file *current_file = NULL;
+
+   /* Move past files that are deliberately not being sync'd. There would not be
+    * any in the current state, but there may be in the server or local state.
+    * If there are in the server state, make sure to leave them in the server's
+    * manifest. */
+   task_cloud_sync_maybe_ignore(sync_state);
 
    if (   sync_state->server_manifest
        && sync_state->server_idx < sync_state->server_manifest->size)
@@ -1118,15 +1203,15 @@ static void task_cloud_sync_end_handler(void *user_data, const char *path, bool 
    if ((sync_state = (task_cloud_sync_state_t *)task->state))
    {
       char title[128];
-      size_t len = strlcpy(title, "Cloud Sync finished", sizeof(title));
+      size_t _len = strlcpy(title, "Cloud Sync finished", sizeof(title));
       if (sync_state->failures || sync_state->conflicts)
-         len += strlcpy(title + len, " with ", sizeof(title) - len);
+         _len += strlcpy(title + _len, " with ", sizeof(title) - _len);
       if (sync_state->failures)
-         len += strlcpy(title + len, "failures", sizeof(title) - len);
+         _len += strlcpy(title + _len, "failures", sizeof(title) - _len);
       if (sync_state->failures && sync_state->conflicts)
-         len += strlcpy(title + len, " and ", sizeof(title) - len);
+         _len += strlcpy(title + _len, " and ", sizeof(title) - _len);
       if (sync_state->conflicts)
-         strlcpy(title + len, "conflicts", sizeof(title) - len);
+         strlcpy(title + _len, "conflicts", sizeof(title) - _len);
       task_set_title(task, strdup(title));
    }
 
@@ -1151,7 +1236,7 @@ static void task_cloud_sync_task_handler(retro_task_t *task)
 
    slock_lock(tcs_running_lock);
    /* we can transfer more than one file at a time */
-   if (sync_state->waiting > ((sync_state->phase == CLOUD_SYNC_PHASE_DIFF) ? 4 : 0))
+   if (sync_state->waiting > ((sync_state->phase == CLOUD_SYNC_PHASE_DIFF) ? 4U : 0U))
    {
       task->when = cpu_features_get_time_usec() + 17 * 1000; /* 17ms */
       slock_unlock(tcs_running_lock);
@@ -1236,13 +1321,13 @@ static bool task_cloud_sync_task_finder(retro_task_t *task, void *user_data)
 
 void task_push_cloud_sync(void)
 {
-   settings_t              *settings   = config_get_ptr();
+   char task_title[128];
    task_finder_data_t       find_data;
    task_cloud_sync_state_t *sync_state = NULL;
    retro_task_t            *task       = NULL;
-   char                     task_title[128];
+   bool cloud_sync_enable              = config_get_ptr()->bools.cloud_sync_enable;
 
-   if (!settings->bools.cloud_sync_enable)
+   if (!cloud_sync_enable)
       return;
 
    if (!tcs_running_lock)
@@ -1265,7 +1350,7 @@ void task_push_cloud_sync(void)
       return;
    }
 
-   sync_state->phase = CLOUD_SYNC_PHASE_BEGIN;
+   sync_state->phase      = CLOUD_SYNC_PHASE_BEGIN;
    sync_state->start_time = cpu_features_get_time_usec();
 
    strlcpy(task_title, "Cloud Sync in progress", sizeof(task_title));
@@ -1280,10 +1365,11 @@ void task_push_cloud_sync(void)
 
 void task_push_cloud_sync_update_driver(void)
 {
-   char        manifest_path[PATH_MAX_LENGTH];
+   char manifest_path[PATH_MAX_LENGTH];
    settings_t *settings = config_get_ptr();
 
-   cloud_sync_find_driver(settings, "cloud sync driver", verbosity_is_enabled());
+   cloud_sync_find_driver(settings->arrays.cloud_sync_driver,
+         "cloud sync driver", verbosity_is_enabled());
 
    /* The sync does a three-way diff: current local <- last sync -> current server.
     * When the server changes it becomes a four way diff, which can lead to odd

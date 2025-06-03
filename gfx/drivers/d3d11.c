@@ -1004,6 +1004,7 @@ static uint32_t d3d11_get_flags(void *data)
 #if defined(HAVE_SLANG) && defined(HAVE_SPIRV_CROSS)
    BIT32_SET(flags, GFX_CTX_FLAGS_SHADERS_SLANG);
    BIT32_SET(flags, GFX_CTX_FLAGS_SUBFRAME_SHADERS);
+   BIT32_SET(flags, GFX_CTX_FLAGS_FAST_TOGGLE_SHADERS);
 #endif
 
    return flags;
@@ -1538,7 +1539,7 @@ static bool d3d11_gfx_set_shader(void* data, enum rarch_shader_type type, const 
             &d3d11->pass[i].frame_count,     /* FrameCount */
             &d3d11->pass[i].frame_direction, /* FrameDirection */
             &d3d11->pass[i].frame_time_delta,/* FrameTimeDelta */
-            &d3d11->pass[i].original_fps,        /* OriginalFPS */
+            &d3d11->pass[i].original_fps,    /* OriginalFPS */
             &d3d11->pass[i].rotation,        /* Rotation */
             &d3d11->pass[i].core_aspect,     /* OriginalAspect */
             &d3d11->pass[i].core_aspect_rot, /* OriginalAspectRotated */
@@ -2735,7 +2736,7 @@ static void d3d11_init_render_targets(d3d11_video_t* d3d11, unsigned width, unsi
          height = d3d11->vp.height;
       }
 
-      RARCH_LOG("[D3D11]: Updating framebuffer size %ux%u.\n", width, height);
+      RARCH_DBG("[D3D11]: Updating framebuffer size %ux%u.\n", width, height);
 
       if (     (i != (d3d11->shader_preset->passes - 1))
             || (width  != d3d11->vp.width)
@@ -3056,7 +3057,7 @@ static bool d3d11_gfx_frame(
 
    texture = d3d11->frame.texture;
 
-   if (d3d11->shader_preset)
+   if (d3d11->shader_preset && video_info->shader_active)
    {
       for (i = 0; i < d3d11->shader_preset->passes; i++)
       {
@@ -3081,29 +3082,24 @@ static bool d3d11_gfx_frame(
          }
 
          if (d3d11->shader_preset->pass[i].frame_count_mod)
-            d3d11->pass[i].frame_count =
-               frame_count % d3d11->shader_preset->pass[i].frame_count_mod;
+            d3d11->pass[i].frame_count = frame_count % d3d11->shader_preset->pass[i].frame_count_mod;
          else
             d3d11->pass[i].frame_count = frame_count;
 
 #ifdef HAVE_REWIND
-         d3d11->pass[i].frame_direction = state_manager_frame_is_reversed() ? -1 : 1;
+         d3d11->pass[i].frame_direction  = state_manager_frame_is_reversed() ? -1 : 1;
 #else
-         d3d11->pass[i].frame_direction = 1;
+         d3d11->pass[i].frame_direction  = 1;
 #endif
-         d3d11->pass[i].frame_time_delta = video_driver_get_frame_time_delta_usec();
-
-         d3d11->pass[i].original_fps = video_driver_get_original_fps();
-
-         d3d11->pass[i].rotation = retroarch_get_rotation();
-
-         d3d11->pass[i].core_aspect = video_driver_get_core_aspect();
-
-         /* OriginalAspectRotated: return 1/aspect for 90 and 270 rotated content */
-         d3d11->pass[i].core_aspect_rot = video_driver_get_core_aspect();
-         uint32_t rot = retroarch_get_rotation();
-         if (rot == 1 || rot == 3)
-            d3d11->pass[i].core_aspect_rot = 1/d3d11->pass[i].core_aspect_rot;
+         d3d11->pass[i].frame_time_delta = (uint32_t)video_driver_get_frame_time_delta_usec();
+         d3d11->pass[i].original_fps     = video_driver_get_original_fps();
+         d3d11->pass[i].rotation         = retroarch_get_rotation();
+         d3d11->pass[i].core_aspect      = video_driver_get_core_aspect();
+         /* OriginalAspectRotated: return 1 / aspect for 90 and 270 rotated content */
+         d3d11->pass[i].core_aspect_rot  = d3d11->pass[i].core_aspect;
+         if (     d3d11->pass[i].rotation == VIDEO_ROTATION_90_DEG
+               || d3d11->pass[i].rotation == VIDEO_ROTATION_270_DEG)
+            d3d11->pass[i].core_aspect_rot = 1 / d3d11->pass[i].core_aspect_rot;
 
          /* Sub-frame info for multiframe shaders (per real content frame).
             Should always be 1 for non-use of subframes */

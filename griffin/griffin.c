@@ -811,6 +811,13 @@ CAMERA
 #ifdef HAVE_V4L2
 #include "../camera/drivers/video4linux2.c"
 #endif
+#ifdef HAVE_PIPEWIRE
+#include "../camera/drivers/pipewire.c"
+#endif
+
+#ifdef HAVE_FFMPEG
+#include "../camera/drivers/ffmpeg.c"
+#endif
 
 #ifdef HAVE_VIDEOPROCESSOR
 #include "../cores/libretro-video-processor/video_processor_v4l2.c"
@@ -850,9 +857,6 @@ RSOUND
 AUDIO
 ============================================================ */
 #include "../audio/audio_driver.c"
-#ifdef HAVE_MICROPHONE
-#include "../audio/microphone_driver.c"
-#endif
 #if defined(__PS3__) || defined (__PSL1GHT__)
 #include "../audio/drivers/ps3_audio.c"
 #elif defined(XENON)
@@ -861,7 +865,7 @@ AUDIO
 #include "../audio/drivers/gx_audio.c"
 #elif defined(__wiiu__)
 #include "../audio/drivers/wiiu_audio.c"
-#elif defined(EMSCRIPTEN)
+#elif defined(HAVE_RWEBAUDIO)
 #include "../audio/drivers/rwebaudio.c"
 #elif defined(PSP) || defined(VITA) || defined(ORBIS)
 #include "../audio/drivers/psp_audio.c"
@@ -956,6 +960,10 @@ MIDI
 ============================================================ */
 #ifdef HAVE_WINMM
 #include "../midi/drivers/winmm_midi.c"
+#endif
+
+#ifdef HAVE_COREMIDI
+#include "../midi/drivers/coremidi.c"
 #endif
 
 /*============================================================
@@ -1681,4 +1689,11 @@ CLOUD SYNC
 #include "../tasks/task_cloudsync.c"
 #include "../network/cloud_sync_driver.c"
 #include "../network/cloud_sync/webdav.c"
+#endif
+
+/*============================================================
+GAME AI
+============================================================ */
+#if defined(HAVE_GAME_AI)
+#include "../ai/game_ai.c"
 #endif

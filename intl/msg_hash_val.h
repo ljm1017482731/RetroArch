@@ -520,10 +520,6 @@ MSG_HASH(
    "Bloquejar el nucli instal·lat"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Preven qualsevol modificació sobre el nucli actual instal·lat. Esta opció pot fer-se servir per evitar actualitzacions no desitjades si un contingut requerix d'una versió específica d'un nucli (p.ex. conjunts de ROMs d'arcade)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_SET_STANDALONE_EXEMPT,
    "Exclou del menú 'Nuclis sense continguts'"
    )
@@ -1221,10 +1217,6 @@ MSG_HASH(
    "Usuari"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Canvia els ajustos del compte, nom d'usuari i de llengua."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Directoris"
    )
@@ -1255,10 +1247,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "Entrada"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Escull el controlador d'entrada que s'usarà. Alguns controladors de vídeo poden forçar-ne l'ús d'altres diferents."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
@@ -1989,16 +1977,8 @@ MSG_HASH(
    "Silencia el mesclador d'àudio."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_MUTE,
-   "Silenciar el so quan s'use l'avançament ràpid"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_MUTE,
    "Automàticament silencia l'àudio quan s'usa l'avançament ràpid."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_SPEEDUP,
-   "Accelerar a l'usar l'avançament ràpid"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_SPEEDUP,
@@ -2229,6 +2209,7 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_PAUSE_ON_DISCONNECT,
    "Posa en pausa el contingut quan qualssevol controlador es desconnecte."
    )
+
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_HAPTIC_FEEDBACK_SETTINGS,
    "Canvia els ajustos de vibració i resposta hàptica."
@@ -2270,7 +2251,6 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_AI_SERVICE,
    "Servei d'IA"
    )
-
 
 
 /* Settings > Input > Port # Controls */
@@ -2796,7 +2776,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Navegador d'arxius"
+   "Directori inicial"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
@@ -3055,6 +3035,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -3157,14 +3139,6 @@ MSG_HASH(
 
 /* Unused (Only Exist in Translation Files) */
 
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_AUTO,
-   "Relació d'aspecte automàtic"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FORCE_ASPECT,
-   "Forçar la relació d'aspecte"
-   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ENABLE,
    "Joc en línia"
@@ -3311,4 +3285,11 @@ MSG_HASH(
 #ifdef _3DS
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

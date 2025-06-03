@@ -22,6 +22,7 @@
  */
 
 #define CINTERFACE
+#define WIN32_LEAN_AND_MEAN
 
 #include <string.h>
 #include <malloc.h>
@@ -1151,6 +1152,7 @@ static uint32_t d3d12_get_flags(void *data)
 #if defined(HAVE_SLANG) && defined(HAVE_SPIRV_CROSS)
    BIT32_SET(flags, GFX_CTX_FLAGS_SHADERS_SLANG);
    BIT32_SET(flags, GFX_CTX_FLAGS_SUBFRAME_SHADERS);
+   BIT32_SET(flags, GFX_CTX_FLAGS_FAST_TOGGLE_SHADERS);
 #endif
 
    return flags;
@@ -1725,7 +1727,7 @@ static bool d3d12_gfx_set_shader(void* data, enum rarch_shader_type type, const 
             &d3d12->pass[i].frame_count,     /* FrameCount */
             &d3d12->pass[i].frame_direction, /* FrameDirection */
             &d3d12->pass[i].frame_time_delta,/* FrameTimeDelta */
-            &d3d12->pass[i].original_fps,        /* OriginalFPS */
+            &d3d12->pass[i].original_fps,    /* OriginalFPS */
             &d3d12->pass[i].rotation,        /* Rotation */
             &d3d12->pass[i].core_aspect,     /* OriginalAspect */
             &d3d12->pass[i].core_aspect_rot, /* OriginalAspectRotated */
@@ -2373,11 +2375,11 @@ static bool d3d12_init_swapchain(d3d12_video_t* d3d12,
 
       if (max_latency == 0)
       {
-         d3d12->flags                |=  D3D12_ST_FLAG_WAIT_FOR_VBLANK;
-         max_latency                  = 1;
+         d3d12->flags     |=  D3D12_ST_FLAG_WAIT_FOR_VBLANK;
+         max_latency       = 1;
       }
       else
-         d3d12->flags                &= ~D3D12_ST_FLAG_WAIT_FOR_VBLANK;
+         d3d12->flags     &= ~D3D12_ST_FLAG_WAIT_FOR_VBLANK;
 
       DXGISetMaximumFrameLatency(d3d12->chain.handle, max_latency);
       DXGIGetMaximumFrameLatency(d3d12->chain.handle, &cur_latency);
@@ -2911,7 +2913,8 @@ static void *d3d12_gfx_init(const video_info_t* video,
    else
       d3d12->flags &= ~D3D12_ST_FLAG_WAITABLE_SWAPCHAINS;
 
-   d3d_input_driver(settings->arrays.input_driver, settings->arrays.input_joypad_driver, input, input_data);
+   d3d_input_driver(settings->arrays.input_driver,
+         settings->arrays.input_joypad_driver, input, input_data);
 
    d3d12_init_base(d3d12);
    d3d12_init_descriptors(d3d12);
@@ -3132,7 +3135,7 @@ static void d3d12_init_render_targets(d3d12_video_t* d3d12, unsigned width, unsi
          height = d3d12->vp.height;
       }
 
-      RARCH_LOG("[D3D12]: Updating framebuffer size %ux%u.\n", width, height);
+      RARCH_DBG("[D3D12]: Updating framebuffer size %ux%u.\n", width, height);
 
       if (i == (d3d12->shader_preset->passes - 1))
       {
@@ -3513,7 +3516,7 @@ static bool d3d12_gfx_frame(
       if (d3d12->flags & D3D12_ST_FLAG_RESIZE_RTS)
          d3d12_init_render_targets(d3d12, width, height);
 
-      if(frame == RETRO_HW_FRAME_BUFFER_VALID)
+      if (frame == RETRO_HW_FRAME_BUFFER_VALID)
       {
          D3D12_BOX src_box;
          D3D12_TEXTURE_COPY_LOCATION src, dst;
@@ -3563,7 +3566,7 @@ static bool d3d12_gfx_frame(
 
    texture = d3d12->frame.texture;
 
-   if (d3d12->shader_preset)
+   if (d3d12->shader_preset && video_info->shader_active)
    {
       cmd->lpVtbl->SetGraphicsRootSignature(cmd,
             d3d12->desc.sl_rootSignature);
@@ -3585,31 +3588,24 @@ static bool d3d12_gfx_frame(
          cmd->lpVtbl->SetPipelineState(cmd, d3d12->pass[i].pipe);
 
          if (d3d12->shader_preset->pass[i].frame_count_mod)
-            d3d12->pass[i].frame_count = frame_count
-                  % d3d12->shader_preset->pass[i].frame_count_mod;
+            d3d12->pass[i].frame_count = frame_count % d3d12->shader_preset->pass[i].frame_count_mod;
          else
             d3d12->pass[i].frame_count = frame_count;
 
 #ifdef HAVE_REWIND
-         if (state_manager_frame_is_reversed())
-            d3d12->pass[i].frame_direction = -1;
-         else
+         d3d12->pass[i].frame_direction  = state_manager_frame_is_reversed() ? -1 : 1;
+#else
+         d3d12->pass[i].frame_direction  = 1;
 #endif
-         d3d12->pass[i].frame_direction = 1;
-
-         d3d12->pass[i].frame_time_delta = video_driver_get_frame_time_delta_usec();
-
-         d3d12->pass[i].original_fps = video_driver_get_original_fps();
-
-         d3d12->pass[i].rotation = retroarch_get_rotation();
-
-         d3d12->pass[i].core_aspect = video_driver_get_core_aspect();
-
-         /* OriginalAspectRotated: return 1/aspect for 90 and 270 rotated content */
-         d3d12->pass[i].core_aspect_rot = video_driver_get_core_aspect();
-         uint32_t rot = retroarch_get_rotation();
-         if (rot == 1 || rot == 3)
-            d3d12->pass[i].core_aspect_rot = 1/d3d12->pass[i].core_aspect_rot;
+         d3d12->pass[i].frame_time_delta = (uint32_t)video_driver_get_frame_time_delta_usec();
+         d3d12->pass[i].original_fps     = video_driver_get_original_fps();
+         d3d12->pass[i].rotation         = retroarch_get_rotation();
+         d3d12->pass[i].core_aspect      = video_driver_get_core_aspect();
+         /* OriginalAspectRotated: return 1 / aspect for 90 and 270 rotated content */
+         d3d12->pass[i].core_aspect_rot  = d3d12->pass[i].core_aspect;
+         if (     d3d12->pass[i].rotation == VIDEO_ROTATION_90_DEG
+               || d3d12->pass[i].rotation == VIDEO_ROTATION_270_DEG)
+            d3d12->pass[i].core_aspect_rot = 1 / d3d12->pass[i].core_aspect_rot;
 
          /* Sub-frame info for multiframe shaders (per real content frame).
             Should always be 1 for non-use of subframes */

@@ -544,10 +544,6 @@ MSG_HASH(
    "Khoá Lõi Đã Cài Đặt"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Ngăn chặn việc sửa đổi lõi hiện được cài đặt. Có thể được sử dụng để tránh cập nhật không mong muốn khi nội dung yêu cầu phiên bản cốt lõi cụ thể (ví dụ: bộ ROM Arcade)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_DELETE,
    "Xóa Core"
    )
@@ -1169,10 +1165,6 @@ MSG_HASH(
    "Người dùng"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Thay đổi cài đặt tài khoản, tên đăng nhập và ngôn ngữ."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Thư mục"
    )
@@ -1497,6 +1489,7 @@ MSG_HASH(
 #endif
 #ifdef ANDROID
 #endif
+
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_HOTKEY_BINDS,
    "Kích hoạt hotkeys"
@@ -1564,13 +1557,8 @@ MSG_HASH(
    )
 
 
-
 /* Settings > Input > Port # Controls */
 
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
-   "Kích hoạt Turbo"
-   )
 
 /* Settings > Latency */
 
@@ -1932,7 +1920,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Quản lý tập tin"
+   "Yêu thích"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LIBRETRO_INFO_PATH,
@@ -2283,6 +2271,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -2406,10 +2396,6 @@ MSG_HASH(
    "Enable Recording"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_SELECT_FROM_PLAYLIST,
-   "Select from Playlst"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ENABLE,
    "Kích hoạt Netplay"
    )
@@ -2514,10 +2500,6 @@ MSG_HASH(
 MSG_HASH(
    MSG_AUTODETECT,
    "Tự động phát hiện"
-   )
-MSG_HASH(
-   MSG_AUTOLOADING_SAVESTATE_FROM,
-   "Đang tự đông tải savestate từ"
    )
 MSG_HASH(
    MSG_CONNECTING_TO_NETPLAY_HOST,
@@ -2631,6 +2613,10 @@ MSG_HASH(
    MSG_VIEWPORT_SIZE_CALCULATION_FAILED,
    "Viewport size calculation failed! Will continue using raw data. This will probably not work right ..."
    )
+MSG_HASH(
+   MSG_AUTOLOADING_SAVESTATE_FROM,
+   "Đang tự đông tải savestate từ"
+   )
 
 /* Lakka */
 
@@ -2723,4 +2709,11 @@ MSG_HASH(
    )
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

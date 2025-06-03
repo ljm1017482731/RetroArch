@@ -516,10 +516,6 @@ MSG_HASH(
    "Kunci Core Terpasang"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Mencegah modifikasi 'core' yang saat ini terpasang. Bermanfaat untuk mencegah 'core' tidak asal diperbarui jika isi permainan perlu versi 'core' tertentu agar tetap berjalan (seperti ROM Arcade)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_DELETE,
    "Hapus Core"
    )
@@ -1285,10 +1281,6 @@ MSG_HASH(
    "Pengguna"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Ubah pengaturan akun, nama pengguna, dan bahasa."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Direktori"
    )
@@ -1343,10 +1335,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "Masukan"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Driver masukan yang dipakai. Beberapa driver video memaksa aplikasi untuk mengganti driver masukan tertentu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
@@ -1489,66 +1477,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION,
    "Penyisipan Bingkai Hitam"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_120,
-   "1 - Untuk Layar di Laju Segar 120Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_180,
-   "2 - Untuk Layar di Laju Segar 180Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_240,
-   "3 - Untuk Layar di Laju Segar 240Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_300,
-   "4 - Untuk Layar di Laju Segar 300Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_360,
-   "5 - Untuk Layar di Laju Segar 360Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_420,
-   "6 - Untuk Layar di Laju Segar 420Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_480,
-   "7 - Untuk Layar di Laju Segar 480Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_540,
-   "8 - Untuk Layar di Laju Segar 540Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_600,
-   "9 - Untuk Layar di Laju Segar 600Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_660,
-   "10 - Untuk Layar di Laju Segar 660Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_720,
-   "11 - Untuk Layar di Laju Segar 720Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_780,
-   "12 - Untuk Layar di Laju Segar 780Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_840,
-   "13 - Untuk Layar di Laju Segar 840Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_900,
-   "14 - Untuk Layar di Laju Segar 900Hz"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_960,
-   "15 - Untuk Layar di Laju Segar 960Hz"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_BFI_DARK_FRAMES,
@@ -2085,10 +2013,6 @@ MSG_HASH(
    "Senyapkan suara Mixer."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_MUTE,
-   "Senyapkan saat dipercepat"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_MUTE,
    "Otomatis senyapkan audio saat menggunakan percepat."
    )
@@ -2437,21 +2361,18 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_BIND_HOLD,
    "Jumlah detik untuk menahan input tombol untuk mengaturnya."
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "Tekan Turbo"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_PERIOD,
    "Lama Turbo"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_PERIOD,
-   "Lamanya (sejumlah bingkai) saat tombol berturbo ditekan."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_DUTY_CYCLE,
-   "Daur Kerja Turbo"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DUTY_CYCLE,
-   "Jumlah bingkai dari Lama Turbo yang tombolnya ditekan. Jika bilangan ini sama atau lebih besar dari yang di Lama Turbo, tombol akan ditekan terus."
+   MENU_ENUM_LABEL_VALUE_TURBO_DUTY_CYCLE_HALF,
+   "Lama Separuh"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
@@ -2462,12 +2383,20 @@ MSG_HASH(
    "Pilih tindakan utama tombol mode turbo."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "Tombol Bawaan Turbo"
+   MENU_ENUM_LABEL_VALUE_TURBO_MODE_SINGLEBUTTON_HOLD,
+   "Satu Tombol (Tahan)"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_DEFAULT_BUTTON,
-   "Tombol aktif bawaan untuk Mode Turbo 'Satu Tombol'."
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_BIND,
+   "Pemeta Turbo"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_BUTTON,
+   "Tombol Turbo"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_TURBO_BUTTON,
+   "Menetapkan tombol turbo di mode 'Satu Tombol'."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_FIRE_SETTINGS,
@@ -2653,6 +2582,14 @@ MSG_HASH(
    "Memulai/hentikan siaran alir dari sesi saat ini ke pelantar video daring."
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_META_TURBO_FIRE_TOGGLE,
+   "Tekan Turbo (Nyala/Mati)"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_META_TURBO_FIRE_TOGGLE,
+   "Menyala/matikan tekan turbo."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_FULLSCREEN_TOGGLE_KEY,
    "Layar Penuh (Mati/Nyala)"
    )
@@ -2678,11 +2615,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_NETPLAY_GAME_WATCH,
    "Main Netplay/Mode Menonton (Mati/Nyala)"
-   )
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "Kirim Info Awakutu"
    )
 
 /* Settings > Input > Port # Controls */
@@ -2773,6 +2705,10 @@ MSG_HASH(
 
 /* Settings > File Browser */
 
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_FILTER_BY_CURRENT_CORE,
+   "Menyaring berkas sesuai Core saat ini di Peramban Berkas."
+   )
 
 /* Settings > Frame Throttle */
 
@@ -3316,7 +3252,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Perambah Berkas"
+   "Direktori Awal"
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_SUBLABEL_RGUI_BROWSER_DIRECTORY,
@@ -3887,6 +3823,8 @@ MSG_HASH(
    "Urut Daftar Main Setelah Pemenggalan Nama (Perlu Mulai Ulang)"
    )
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 MSG_HASH(
@@ -4098,10 +4036,6 @@ MSG_HASH(
    "Bantuan"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "Kirim Info Awakutu"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_LAN_SCAN_SETTINGS,
    "Pindai jejaring setempat"
    )
@@ -4162,22 +4096,6 @@ MSG_HASH(
 
 /* Notifications */
 
-MSG_HASH(
-   MSG_FAILED_TO_SAVE_DEBUG_INFO,
-   "Gagal menyimpan info awakutu."
-   )
-MSG_HASH(
-   MSG_FAILED_TO_SEND_DEBUG_INFO,
-   "Gagal mengirim info awakutu ke server."
-   )
-MSG_HASH(
-   MSG_SENDING_DEBUG_INFO,
-   "Mengirim info awakutu..."
-   )
-MSG_HASH(
-   MSG_SENT_DEBUG_INFO,
-   "Info awakutu berhasil dikirim. Nomor ID Anda %u."
-   )
 MSG_HASH(
    MSG_NATIVE,
    "Lokal"
@@ -4432,3 +4350,10 @@ MSG_HASH(
    MSG_SDL2_MIC_NEEDS_SDL2_AUDIO,
    "Mikrofon sdl2 perlu pengandar audio sdl2"
    )
+#ifdef HAVE_GAME_AI
+
+
+
+
+
+#endif

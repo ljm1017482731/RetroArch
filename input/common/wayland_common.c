@@ -806,6 +806,10 @@ static void wl_registry_handle_global(void *data, struct wl_registry *reg,
       wl->single_pixel_manager = (struct wp_single_pixel_buffer_manager_v1*)
          wl_registry_bind(
             reg, id, &wp_single_pixel_buffer_manager_v1_interface, MIN(version, 1));
+   else if (string_is_equal(interface, xdg_toplevel_icon_manager_v1_interface.name) && found++)
+      wl->xdg_toplevel_icon_manager = (struct xdg_toplevel_icon_manager_v1*)
+         wl_registry_bind(
+            reg, id, &xdg_toplevel_icon_manager_v1_interface, MIN(version, 1));
 
    if (found > 1)
    RARCH_LOG("[Wayland]: Registered interface %s at version %u\n",
@@ -996,8 +1000,7 @@ static void wl_data_device_handle_drop(void *data,
    FILE *stream;
    int pipefd[2];
    void *buffer;
-   size_t length;
-   size_t len                 = 0;
+   size_t __len, _len         = 0;
    ssize_t read               = 0;
    char *line                 = NULL;
    char file_list[512][512]   = { 0 };
@@ -1012,7 +1015,7 @@ static void wl_data_device_handle_drop(void *data,
 
    pipe(pipefd);
 
-   buffer = wayland_data_offer_receive(wl->input.dpy, offer_data->offer, &length, FILE_MIME, false);
+   buffer = wayland_data_offer_receive(wl->input.dpy, offer_data->offer, &__len, FILE_MIME, false);
 
    close(pipefd[1]);
    close(pipefd[0]);
@@ -1023,14 +1026,14 @@ static void wl_data_device_handle_drop(void *data,
    wl_data_offer_destroy(offer_data->offer);
    free(offer_data);
 
-   if (!(stream = fmemopen(buffer, length, "r")))
+   if (!(stream = fmemopen(buffer, __len, "r")))
    {
       RARCH_WARN("[Wayland]: Failed to open DnD buffer\n");
       return;
    }
 
    RARCH_WARN("[Wayland]: Files opp:\n");
-   while ((read = getline(&line,  &len, stream)) != -1)
+   while ((read = getline(&line,  &_len, stream)) != -1)
    {
       line[strcspn(line, "\r\n")] = 0;
       RARCH_DBG("[Wayland]: > \"%s\"\n", line);

@@ -198,6 +198,7 @@ MSG_HASH(
 #ifdef ANDROID
 #endif
 
+
 /* Settings > Input > Haptic Feedback/Vibration */
 
 
@@ -205,7 +206,6 @@ MSG_HASH(
 
 
 /* Settings > Input > Hotkeys */
-
 
 
 
@@ -491,6 +491,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -555,4 +557,11 @@ MSG_HASH(
 #ifdef _3DS
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

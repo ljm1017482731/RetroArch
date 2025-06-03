@@ -32,6 +32,10 @@
 #include "../config.h"
 #endif /* HAVE_CONFIG_H */
 
+#if defined(_WIN32) && !defined(SOCKET)
+#include <winsock2.h>
+#endif
+
 #include "input_defines.h"
 #include "input_types.h"
 #ifdef HAVE_OVERLAY
@@ -92,6 +96,8 @@
 #define DEFAULT_MAX_PADS 4
 #elif defined(DINGUX)
 #define DEFAULT_MAX_PADS 2
+#elif defined(EMSCRIPTEN)
+#define DEFAULT_MAX_PADS 4
 #else
 #define DEFAULT_MAX_PADS 16
 #endif /* defined(ANDROID) */
@@ -99,8 +105,6 @@
 #define MAPPER_GET_KEY(state, key) (((state)->keys[(key) / 32] >> ((key) % 32)) & 1)
 #define MAPPER_SET_KEY(state, key) (state)->keys[(key) / 32] |= 1 << ((key) % 32)
 #define MAPPER_UNSET_KEY(state, key) (state)->keys[(key) / 32] &= ~(1 << ((key) % 32))
-
-#define INHERIT_JOYAXIS(binds) (((binds)[x_plus].joyaxis == (binds)[x_minus].joyaxis) || (  (binds)[y_plus].joyaxis == (binds)[y_minus].joyaxis))
 
 #define REPLAY_TOKEN_INVALID          '\0'
 #define REPLAY_TOKEN_REGULAR_FRAME    'f'
@@ -153,11 +157,9 @@ enum input_driver_state_flags
    INP_FLAG_BLOCK_LIBRETRO_INPUT     = (1 << 4),
    INP_FLAG_BLOCK_POINTER_INPUT      = (1 << 5),
    INP_FLAG_GRAB_MOUSE_STATE         = (1 << 6),
-   INP_FLAG_OLD_ANALOG_DPAD_MODE_SET = (1 << 7),
-   INP_FLAG_OLD_LIBRETRO_DEVICE_SET  = (1 << 8),
-   INP_FLAG_REMAPPING_CACHE_ACTIVE   = (1 << 9),
-   INP_FLAG_DEFERRED_WAIT_KEYS       = (1 << 10),
-   INP_FLAG_WAIT_INPUT_RELEASE       = (1 << 11)
+   INP_FLAG_REMAPPING_CACHE_ACTIVE   = (1 << 7),
+   INP_FLAG_DEFERRED_WAIT_KEYS       = (1 << 8),
+   INP_FLAG_WAIT_INPUT_RELEASE       = (1 << 9)
 };
 
 #ifdef HAVE_BSV_MOVIE
@@ -288,7 +290,11 @@ struct remote_message
 struct input_remote
 {
 #if defined(HAVE_NETWORKING) && defined(HAVE_NETWORKGAMEPAD)
+#ifdef _WIN32
+   SOCKET net_fd[MAX_USERS];
+#else
    int net_fd[MAX_USERS];
+#endif
 #endif
    bool state[RARCH_BIND_LIST_END];
 };
@@ -556,10 +562,9 @@ typedef struct
    turbo_buttons_t turbo_btns; /* int32_t alignment */
 
    input_mapper_t mapper;          /* uint32_t alignment */
+   input_remap_cache_t remapping_cache;
    input_device_info_t input_device_info[MAX_INPUT_DEVICES]; /* unsigned alignment */
    input_mouse_info_t input_mouse_info[MAX_INPUT_DEVICES];
-   unsigned old_analog_dpad_mode[MAX_USERS];
-   unsigned old_libretro_device[MAX_USERS];
    unsigned osk_last_codepoint;
    unsigned osk_last_codepoint_len;
    unsigned input_hotkey_block_counter;

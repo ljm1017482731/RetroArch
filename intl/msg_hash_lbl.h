@@ -241,6 +241,10 @@ MSG_HASH(
    "rwebaudio"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_AUDIO_DRIVER_AUDIOWORKLET,
+   "audioworklet"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_AUDIO_DRIVER_JACK,
    "jack"
    )
@@ -693,7 +697,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_CLOSE_CONTENT,
-   "unload_core"
+   "close_content"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_COLLECTION,
@@ -828,6 +832,10 @@ MSG_HASH(
    "load_core"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_CORE_LIST_UNLOAD,
+   "unload_core"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_SIDELOAD_CORE_LIST,
    "sideload_core"
    )
@@ -926,10 +934,6 @@ MSG_HASH(
    "custom_bind_all"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_CUSTOM_RATIO,
-   "custom_ratio"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_DATABASE_MANAGER,
    "database_manager"
    )
@@ -1010,6 +1014,10 @@ MSG_HASH(
    "deferred_dropdown_box_list_disk_index"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_DEFERRED_DROPDOWN_BOX_LIST_INPUT_RETROPAD_BIND,
+   "deferred_dropdown_box_list_input_retropad_bind"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_DEFERRED_DROPDOWN_BOX_LIST_INPUT_DEVICE_TYPE,
    "deferred_dropdown_box_list_input_device_type"
    )
@@ -1038,6 +1046,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_DEFERRED_DROPDOWN_BOX_LIST_AUDIO_DEVICE,
    "deferred_dropdown_box_list_audio_device"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_DEFERRED_DROPDOWN_BOX_LIST_MIDI_DEVICE,
+   "deferred_dropdown_box_list_midi_device"
    )
 #ifdef HAVE_MICROPHONE
 MSG_HASH(
@@ -1551,6 +1563,10 @@ MSG_HASH(
    "core_disk_options"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_DISK_INDEX,
+   "core_disk_index"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_DOWNLOADED_FILE_DETECT_CORE_LIST,
    "downloaded_file_detect_core_list"
    )
@@ -1941,10 +1957,6 @@ MSG_HASH(
    "input_driver"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_INPUT_DUTY_CYCLE,
-   "input_duty_cycle"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_INPUT_RETROPAD_BINDS,
    "input_retropad_binds"
    )
@@ -2183,10 +2195,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_INPUT_TOUCH_ENABLE,
    "input_touch_enable"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_INPUT_TURBO_PERIOD,
-   "input_turbo_period"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_INPUT_USER_10_BINDS,
@@ -3403,10 +3411,6 @@ MSG_HASH(
    "restart_retroarch"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_RESUME,
-   "resume"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_RESUME_CONTENT,
    "resume_content"
    )
@@ -3501,6 +3505,22 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_CREATE_NEW_PLAYLIST,
    "playlist_create"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_ADD_TO_PLAYLIST_QUICKMENU,
+   "playlist_add_quickmenu"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_DEFERRED_ADD_TO_PLAYLIST_QUICKMENU,
+   "deferred_add_to_playlist_quickmenu"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_ADD_ENTRY_TO_PLAYLIST_QUICKMENU,
+   "add_entry_to_playlist_quickmenu"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_CREATE_NEW_PLAYLIST_QUICKMENU,
+   "playlist_create_quickmenu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_SET_CORE_ASSOCIATION,
@@ -4139,10 +4159,6 @@ MSG_HASH(
    "video_aspect_ratio"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VIDEO_ASPECT_RATIO_AUTO,
-   "video_aspect_ratio_auto"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VIDEO_ASPECT_RATIO_INDEX,
    "aspect_ratio_index"
    )
@@ -4389,10 +4405,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VIDEO_FONT_SIZE,
    "video_font_size"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VIDEO_FORCE_ASPECT,
-   "video_force_aspect"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VIDEO_FORCE_SRGB_DISABLE,
@@ -4809,10 +4821,6 @@ MSG_HASH(
    "content_show_history"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_CONTENT_SHOW_ADD,
-   "content_show_add"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_CONTENT_SHOW_ADD_ENTRY,
    "content_show_add_entry"
    )
@@ -4831,6 +4839,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_CONTENT_SHOW_FAVORITES,
    "content_show_favorites"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_CONTENT_SHOW_FAVORITES_FIRST,
+   "content_show_favorites_first"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_CONTENT_SHOW_IMAGES,
@@ -5197,6 +5209,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_MATERIALUI_THUMBNAIL_BACKGROUND_ENABLE,
    "materialui_thumbnail_background_enable"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_MENU_THUMBNAIL_BACKGROUND_ENABLE,
+   "menu_thumbnail_background_enable"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_RENAME_ENTRY,
@@ -6181,10 +6197,6 @@ MSG_HASH(
    "playlist_allow_non_png"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_HELP_SEND_DEBUG_INFO,
-   "help_send_debug_info"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VIBRATE_ON_KEYPRESS,
    "vibrate_on_keypress"
    )
@@ -6207,6 +6219,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_NOTIFICATION_SHOW_AUTOCONFIG,
    "notification_show_autoconfig"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_NOTIFICATION_SHOW_AUTOCONFIG_FAILS,
+   "notification_show_autoconfig_fails"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_NOTIFICATION_SHOW_CHEATS_APPLIED,
@@ -6577,12 +6593,24 @@ MSG_HASH(
    "input_turbo_mode"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_INPUT_TURBO_DEFAULT_BUTTON,
-   "input_turbo_default_button"
+   MENU_ENUM_LABEL_INPUT_TURBO_BIND,
+   "input_turbo_bind"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_INPUT_ALLOW_TURBO_DPAD,
-   "input_allow_turbo_dpad"
+   MENU_ENUM_LABEL_INPUT_TURBO_BUTTON,
+   "input_turbo_button"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_INPUT_TURBO_PERIOD,
+   "input_turbo_period"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_INPUT_TURBO_DUTY_CYCLE,
+   "input_turbo_duty_cycle"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_INPUT_TURBO_ALLOW_DPAD,
+   "input_turbo_allow_dpad"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_MENU_VIEWS_SETTINGS,
@@ -6624,3 +6652,25 @@ MSG_HASH(
    MENU_ENUM_LABEL_GAMEMODE_ENABLE,
    "game_mode_enable"
    )
+#ifdef HAVE_GAME_AI
+MSG_HASH(
+   MENU_ENUM_LABEL_CORE_GAME_AI_OPTIONS,
+   "core_game_ai_options"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_QUICK_MENU_SHOW_GAME_AI,
+   "quick_menu_show_game_ai"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_GAME_AI_OVERRIDE_P1,
+   "game_ai_override_p1"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_GAME_AI_OVERRIDE_P2,
+   "game_ai_override_p2"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_GAME_AI_SHOW_DEBUG,
+   "game_ai_show_debug"
+   )
+#endif

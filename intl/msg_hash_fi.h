@@ -72,6 +72,14 @@ MSG_HASH(
    "Valitse käytettävä ydin."
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CORE_LIST_UNLOAD,
+   "Vapauta ydin"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CORE_LIST_UNLOAD,
+   "Vapauta ladattu ydin."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_HELP_CORE_LIST,
    "Selaa libretro ytimiä. Tiedostoselaimen aloituspaikka riippuu ydinten kansion polusta. Jos tyhjä, se alkaa juuresta.\nJos ydinkansion on kansio, valikko käyttää sitä pääkansiona. Jos ydinkansio on täydellinen polku, se alkaa kansiosta, jossa ytimen tiedosto on."
    )
@@ -556,10 +564,6 @@ MSG_HASH(
    "Lukitse asennettu ydin"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Estää muutokset nykyiseen asennettuun ytimeen. Voi käyttää epätoivoivottujen päivitysten estämiseen, kun sisältö vaatii tietyn ydinversion (esim. Kolikkopelien ROM-setit)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_SET_STANDALONE_EXEMPT,
    "Poista \"Sisällöttömät ytimet\" valikosta"
    )
@@ -905,6 +909,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_V4L2_SUPPORT,
    "Video4Linux2-tuki"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "SSL-tuki"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
@@ -1474,7 +1482,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Muuta tiliä, käyttäjänimeä ja kielen asetuksia."
+   "Vaihda yksityisyyden, tilin ja käyttäjätunnuksen asetuksia."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
@@ -1534,7 +1542,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Käytettävä syöteajuri. Jotkin videoajurit pakottavat eri syöteajurin."
+   "Käytettävä syöteajuri. Jotkin videoajurit pakottavat eri syöteajurin. (Vaatii uudelleenkäynnistyksen)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_INPUT_DRIVER_LINUXRAW,
@@ -1873,126 +1881,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION,
    "Mustan ruudun lisäys"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_120,
-   "1 - Näytön 120 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_180,
-   "2 - Näytön 180 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_240,
-   "3 - Näytön 240 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_300,
-   "4 - Näytön 300 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_360,
-   "5 - Näytön 360 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_420,
-   "6 - Näytön 420 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_480,
-   "7 - Näytön 480 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_540,
-   "8 - Näytön 540 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_600,
-   "9 - Näytön 600 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_660,
-   "10 - Näytön 660 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_720,
-   "11 - Näytön 720 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_780,
-   "12 - Näytön 780 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_840,
-   "13 - Näytön 840 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_900,
-   "14 - Näytön 900 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_BLACK_FRAME_INSERTION_VALUE_960,
-   "15 - Näytön 960 Hz:n virkistystaajuudelle"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_120,
-   "2 - 120 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_180,
-   "3 - 180 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_240,
-   "4 - 240 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_300,
-   "5 - 300 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_360,
-   "6 - 360 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_420,
-   "7 - 420 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_480,
-   "8 - 480 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_540,
-   "9 - 540 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_600,
-   "10 - 600 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_660,
-   "11 - 660 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_720,
-   "12 - 720 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_780,
-   "13 - 780 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_840,
-   "14 - 840 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_900,
-   "15 - 900 Hz:n virkistystaajuuden näytöille"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SHADER_SUBFRAMES_VALUE_960,
-   "16 - 960 Hz:n virkistystaajuuden näytöille"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_GPU_SCREENSHOT,
@@ -2653,16 +2541,8 @@ MSG_HASH(
    "Mykistä kaikki äänet äänettömässä tilassa."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_MUTE,
-   "Mykistä pikakelattaessa"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_MUTE,
    "Mykistä ääni automaattisesti, kun pikakelaus on käytössä."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_SPEEDUP,
-   "Nopeuta pikakelattaessa"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_SPEEDUP,
@@ -3125,21 +3005,14 @@ MSG_HASH(
    MSG_INPUT_BIND_HOLD,
    "Pidä"
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "Turbotulitus"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_PERIOD,
    "Turbon jakso"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_PERIOD,
-   "Ajanjakso (kuvissa) kun turbo-yhteensopivia painikkeita painetaan."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_DUTY_CYCLE,
-   "Turbon käyttöjakso"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DUTY_CYCLE,
-   "Kuvien määrä turbojaksolla, jonka aikana painikkeita pidetään painettuina. Jos tämä luku on yhtä suuri tai suurempi kuin turbojakso, painikkeet eivät koskaan vapaudu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
@@ -3166,12 +3039,8 @@ MSG_HASH(
    "Yksittäinen painike (Pito)"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "Turbon oletuspainike"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_DEFAULT_BUTTON,
-   "Oletusarvoinen aktiivinen painike turbotilalle käyttäessä tilaa 'yksi painike'."
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_BUTTON,
+   "Turbopainike"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_FIRE_SETTINGS,
@@ -3256,16 +3125,8 @@ MSG_HASH(
    "Poista tietopainike käytöstä"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_INFO_BUTTON,
-   "Jos käytössä, tiedot-painikkeen painallukset jätetään huomiotta."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DISABLE_SEARCH_BUTTON,
    "Poista hakupainike käytöstä"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_SEARCH_BUTTON,
-   "Jos käytössä, hakupainikkeen painallukset jätetään huomiotta."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_INPUT_SWAP_OK_CANCEL,
@@ -3321,10 +3182,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_MENU_TOGGLE,
    "Valikon vaihto"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_MENU_TOGGLE,
-   "Vaihtaa valikon ja käynnissä olevan sisällön välillä nykyisellä näytöllä."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_QUIT_GAMEPAD_COMBO,
@@ -3397,10 +3254,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
    "Keskeytä"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_PAUSE_TOGGLE,
-   "Vaihtaa käynnissä olevan sisällön keskeytyksen päälle tai pois."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_FRAMEADVANCE,
@@ -3706,15 +3559,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_META_NETPLAY_FADE_CHAT_TOGGLE,
    "Vaihda häivytettävän ja staattisten verkkochat-viestien välillä."
-   )
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "Lähetä vianjäljitystietoa"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_SEND_DEBUG_INFO,
-   "Lähettää laitteestasi ja RetroArch-kokoonpanostasi diagnostiikkatietoja palvelimillemme analysoitavaksi."
    )
 
 /* Settings > Input > Port # Controls */
@@ -4184,10 +4028,6 @@ MSG_HASH(
    "Tilan automaattinen tallennus"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_SAVESTATE_AUTO_SAVE,
-   "Luo tilatallennus automaattisesti kun suljet sisällön. RetroArch lataa automaattisesti tämän tilatallennuksen, jos \"Lataa tilatallennus automaattisesti\" on käytössä."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SAVESTATE_AUTO_LOAD,
    "Tilan automaattinen lataaminen"
    )
@@ -4362,10 +4202,6 @@ MSG_HASH(
    "Suodata tiedostoja tiedostoselaimessa tuettujen tiedostopäätteiden mukaan."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_PLAYER,
-   "Käytä sisäänrakennettua mediasoitinta"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_FILTER_BY_CURRENT_CORE,
    "Suodata nykyisen ytimen mukaan"
    )
@@ -4376,6 +4212,22 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_USE_LAST_START_DIRECTORY,
    "Avaa tiedostoselain viimeksi käytetyssä sijainnissa, kun lataat sisältöä aloitushakemistosta. Huom: sijainti palautetaan oletusarvoon RetroArchin uudelleenkäynnistyessä."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CORE_SUGGEST_ALWAYS,
+   "Ehdota aina ytimiä"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CORE_SUGGEST_ALWAYS,
+   "Ehdota saatavilla olevia ytimiä silloinkin, kun ydin on jo ladattu."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_PLAYER,
+   "Käytä sisäänrakennettua mediasoitinta"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_IMAGE_VIEWER,
+   "Käytä sisäänrakennettua kuvankatselinta"
    )
 
 /* Settings > Frame Throttle */
@@ -5010,6 +4862,10 @@ MSG_HASH(
    "Syötelaitteen (Automaattinen kokoonpano) yhdistämisen ilmoitukset"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_NOTIFICATION_SHOW_AUTOCONFIG_FAILS,
+   "Syötelaitteen (Autoconfig) epäonnistumisen ilmoitukset"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NOTIFICATION_SHOW_CHEATS_APPLIED,
    "Huijauskoodi-ilmoitukset"
    )
@@ -5028,6 +4884,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_NOTIFICATION_SHOW_AUTOCONFIG,
    "Näytä näytöllä ilmoitus viesti, kun syöttölaitteita yhdistetään/irrotetaan."
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_NOTIFICATION_SHOW_AUTOCONFIG_FAILS,
+   "Näytä viesti, kun syötelaitteita ei voitu määrittää."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NOTIFICATION_SHOW_REMAP_LOAD,
@@ -5146,10 +5006,6 @@ MSG_HASH(
    "Ilmoituksen koko"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_FONT_SIZE,
-   "Määritä fontin koko pisteinä."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_POS_X,
    "Ilmoituksen sijainti (vaaka)"
    )
@@ -5257,10 +5113,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PAUSE_LIBRETRO,
    "Keskeytä sisältö kun valikko on aktiivisena"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_PAUSE_LIBRETRO,
-   "Keskeytä käynnissä oleva sisältö, jos valikko on aktiivinen."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_SAVESTATE_RESUME,
@@ -5524,6 +5376,10 @@ MSG_HASH(
    "Näytä \"Asetukset\""
    )
 MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_SETTINGS,
+   "Näytä 'Asetukset'-valikko."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_SETTINGS_PASSWORD,
    "Aseta salasana saadaksesi \"Asetukset\"-käyttöön"
    )
@@ -5536,36 +5392,64 @@ MSG_HASH(
    "Näytä \"Suosikit\""
    )
 MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_FAVORITES,
+   "Näytä 'Suosikit'-valikko."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_FAVORITES_FIRST,
+   "Näytä suosikit ensin"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_FAVORITES_FIRST,
+   "Näytä 'Suosikit'-valikko ennen 'Historia'-valikkoa."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_IMAGES,
    "Näytä \"Kuvat\""
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_IMAGES,
+   "Näytä 'Kuvat'-valikko."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_MUSIC,
    "Näytä \"Musiikki\""
    )
 MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_MUSIC,
+   "Näytä 'Musiikki'-valikko."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_VIDEO,
    "Näytä \"Videot\""
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_VIDEO,
+   "Näytä 'Videot'-valikko."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_NETPLAY,
    "Näytä \"Verkkopeli\""
    )
 MSG_HASH(
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_NETPLAY,
+   "Näytä 'Verkkopeli'-valikko."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_HISTORY,
    "Näytä \"Historia\""
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD,
-   "Näytä \"Tuo sisältöä\""
+   MENU_ENUM_SUBLABEL_CONTENT_SHOW_HISTORY,
+   "Näytä viimeaikaisten kohteiden historiavalikko."
    )
-MSG_HASH( /* FIXME can now be replaced with MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD */
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD_ENTRY,
    "Näytä \"Tuo sisältöä\""
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CONTENT_SHOW_ADD_ENTRY,
-   "Näytä \"Tuo sisältöä\"-tietue päävalikossa tai soittolistojen alavalikossa."
+   "Näytä 'Tuo sisältöä'-tietue päävalikossa tai soittolistojen alavalikossa."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_ADD_CONTENT_ENTRY_DISPLAY_MAIN_TAB,
@@ -6034,10 +5918,6 @@ MSG_HASH(
    "Näytä \"Käyttäjä\""
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_ICON_THUMBNAILS,
-   "Soittolistan kuvakkeet"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_SETTINGS_SHOW_USER,
    "Näytä \"Käyttäjä\"-asetukset."
    )
@@ -6112,6 +5992,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_THUMBNAIL_UPSCALE_THRESHOLD,
    "Suurenna automaattisesti esikatselukuvat, joiden leveys / korkeus on pienempi kuin määritetty arvo. Parantaa kuvanlaatua. Vaikuttaa kohtalaisesti suorituskykyyn."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_THUMBNAIL_BACKGROUND_ENABLE,
+   "Pikkukuvan taustat"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_MENU_THUMBNAIL_BACKGROUND_ENABLE,
+   "Mahdollistaa käyttämättömän tilan täyttämisen kiinteällä taustalla esikatselukuvissa. Tämä takaa tasaisen esityskoon kaikille kuville ja parantaa valikon ulkoasua katsottaessa erilaisia esikatselukuvia, joilla on vaihtelevat perusmitat."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_TICKER_TYPE,
@@ -7120,7 +7008,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Tiedostoselain"
+   "Aloituskansio"
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_CONFIG_DIRECTORY,
@@ -7936,10 +7824,6 @@ MSG_HASH(
    "Jatka"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_RESUME_CONTENT,
-   "Jatka käynnissä olevaa sisältöä ja poistu pikavalikosta."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RESTART_CONTENT,
    "Käynnistä uudelleen"
    )
@@ -7950,10 +7834,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOSE_CONTENT,
    "Sulje sisältö"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_CLOSE_CONTENT,
-   "Sulje nykyinen sisältö. Tallentamattomat muutokset saattavat kadota."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_TAKE_SCREENSHOT,
@@ -8088,16 +7968,8 @@ MSG_HASH(
    "Ytimen asetukset"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_OPTIONS,
-   "Muuta käynnissä olevan sisällön asetuksia."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_INPUT_REMAPPING_OPTIONS,
    "Ohjaus"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_INPUT_REMAPPING_OPTIONS,
-   "Muuta käynnissä olevan sisällön ohjausasetuksia."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_CHEAT_OPTIONS,
@@ -8191,11 +8063,11 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_OPTIONS_RESET,
-   "Nollaa asetukset"
+   "Nollaa ytimen asetukset"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CORE_OPTIONS_RESET,
-   "Aseta kaikki ydinasetukset oletusarvoihin."
+   "Aseta kaikki nykyisen ytimen valinnat oletusarvoihin."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_OPTIONS_FLUSH,
@@ -9077,6 +8949,10 @@ MSG_HASH(
    "Kierrä pienoiskuvia"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_RANDOM_SELECT,
+   "Satunnainen valinta"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BASIC_MENU_CONTROLS_BACK,
    "Takaisin"
    )
@@ -9831,10 +9707,6 @@ MSG_HASH(
    "Läpinäkyvyys"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_MENU_RGUI_TRANSPARENCY,
-   "Ota käyttöön sisällön taustanäyttö, kun pikavalikko on aktiivisena. Läpinäkyvyyden poistaminen voi muuttaa teeman värejä."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_RGUI_SHADOWS,
    "Varjotehosteet"
    )
@@ -10407,6 +10279,14 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_ICE_COLD,
    "Jäänkylmä"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_GRAY_DARK,
+   "Tumman harmaa"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_GRAY_LIGHT,
+   "Vaalean harmaa"
+   )
 
 /* Ozone: Settings > User Interface > Appearance */
 
@@ -10426,6 +10306,31 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_OZONE_SORT_AFTER_TRUNCATE_PLAYLIST_NAME,
    "Soittolistat järjestetään uudelleen aakkosjärjestykseen sen jälkeen, kun valmistajan nimi soittolistojen nimistä on poistettu."
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_LEFT_THUMBNAILS_OZONE,
+   "Toissijainen esikatselukuva"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_LEFT_THUMBNAILS_OZONE,
+   "Korvaa sisällön metatieto toisella esikatselukuvalla."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_OZONE_SCROLL_CONTENT_METADATA,
+   "Käytä tekstinauhaa sisällön metatietoon"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_OZONE_SCROLL_CONTENT_METADATA,
+   "Kun käytössä, soittolistojen oikean sivun metatietojen jokainen kohde (liitetty ydin, toistoaika) on yhdellä rivillä; merkkijonot, jotka ylittävät sivupalkin leveyden, näytetään vieritettävänä tekstinauhana. Kun pois päältä, kaikki sisällön metatiedot näytetään kiinteästi rivitettynä niin monella riville kuin tarvitaan."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_OZONE_THUMBNAIL_SCALE_FACTOR,
+   "Esikatselukuvan skaalauskerroin"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_OZONE_THUMBNAIL_SCALE_FACTOR,
+   "Skaalaa esikatselukuvien palkin koko."
+   )
+
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OZONE_MENU_COLOR_THEME,
    "Väriteema"
@@ -10482,30 +10387,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OZONE_COLOR_THEME_PURPLE_RAIN,
    "Violetti sade"
    )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_LEFT_THUMBNAILS_OZONE,
-   "Toissijainen esikatselukuva"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_LEFT_THUMBNAILS_OZONE,
-   "Korvaa sisällön metatieto toisella esikatselukuvalla."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_OZONE_SCROLL_CONTENT_METADATA,
-   "Käytä tekstinauhaa sisällön metatietoon"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_OZONE_SCROLL_CONTENT_METADATA,
-   "Kun käytössä, soittolistojen oikean sivun metatietojen jokainen kohde (liitetty ydin, toistoaika) on yhdellä rivillä; merkkijonot, jotka ylittävät sivupalkin leveyden, näytetään vieritettävänä tekstinauhana. Kun pois päältä, kaikki sisällön metatiedot näytetään kiinteästi rivitettynä niin monella riville kuin tarvitaan."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_OZONE_THUMBNAIL_SCALE_FACTOR,
-   "Esikatselukuvan skaalauskerroin"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_OZONE_THUMBNAIL_SCALE_FACTOR,
-   "Skaalaa esikatselukuvien palkin koko."
-   )
+
 
 /* MaterialUI: Settings > User Interface > Appearance */
 
@@ -10599,7 +10481,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MATERIALUI_THUMBNAIL_BACKGROUND_ENABLE,
-   "Piirrä esikatselukuvan taustat"
+   "Pikkukuvan taustat"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MATERIALUI_THUMBNAIL_BACKGROUND_ENABLE,
@@ -11459,10 +11341,6 @@ MSG_HASH(
    "Näp"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_IMAGE_VIEWER,
-   "Käytä sisäänrakennettua kuvankatselinta"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_MAX_SWAPCHAIN_IMAGES,
    "Määrää videoajurin käyttämään yksiselitteisesti määritettyä puskurointitilaa."
    )
@@ -11534,10 +11412,6 @@ MSG_HASH(
 /* Unused (Only Exist in Translation Files) */
 
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_AUTO,
-   "Automaattinen kuvasuhde"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ROOM_NICKNAME_LAN,
    "Nimimerkki (LAN): %s"
    )
@@ -11548,10 +11422,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_BGM_ENABLE,
    "Järjestelmän taustamusiikki"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CUSTOM_RATIO,
-   "Mukautettu suhde"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RECORD_ENABLE,
@@ -11572,22 +11442,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CHEAT_MATCH_IDX,
    "Valitse tarkasteltava vastaavuus."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FORCE_ASPECT,
-   "Pakota kuvasuhde"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_SELECT_FROM_PLAYLIST,
-   "Valitse soittolistalta"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RESUME,
-   "Jatka"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_RESUME,
-   "Jatka käynnissä olevaa sisältöä ja poistu pikavalikosta."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEAT_VIEW_MATCHES,
@@ -11664,10 +11518,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_HELP_WHAT_IS_A_CORE,
    "Mikä on ydin?"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "Lähetä vianjäljitystiedot"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANAGEMENT,
@@ -11947,30 +11797,6 @@ MSG_HASH(
    "Poista kaikki huijaukset painamalla oikealle viisi kertaa."
    )
 MSG_HASH(
-   MSG_FAILED_TO_SAVE_DEBUG_INFO,
-   "Vianjäljitystietojen tallennus epäonnistui."
-   )
-MSG_HASH(
-   MSG_FAILED_TO_SEND_DEBUG_INFO,
-   "Vianjäljitystietojen lähettäminen palvelimeen epäonnistui."
-   )
-MSG_HASH(
-   MSG_SENDING_DEBUG_INFO,
-   "Lähetetään vianjäljitystietoa..."
-   )
-MSG_HASH(
-   MSG_SENT_DEBUG_INFO,
-   "Vianjäljitystiedot lähettiin palvelimelle onnistuneesti. ID-numerosi on %u."
-   )
-MSG_HASH(
-   MSG_PRESS_TWO_MORE_TIMES_TO_SEND_DEBUG_INFO,
-   "Paina vielä kaksi kertaa lähettääksesi diagnostiikkatiedot RetroArchin tiimille."
-   )
-MSG_HASH(
-   MSG_PRESS_ONE_MORE_TIME_TO_SEND_DEBUG_INFO,
-   "Paina vielä kerran lähettääksesi diagnostiikkatiedot RetroArchin tiimille."
-   )
-MSG_HASH(
    MSG_AUDIO_MIXER_VOLUME,
    "Globaalin mikserin äänenvoimakkuus"
    )
@@ -12170,10 +11996,6 @@ MSG_HASH(
 MSG_HASH(
    MSG_AUTODETECT,
    "Havaitse automaattisesti"
-   )
-MSG_HASH(
-   MSG_AUTOLOADING_SAVESTATE_FROM,
-   "Tilan lataaminen kohteesta"
    )
 MSG_HASH(
    MSG_CAPABILITIES,
@@ -13012,6 +12834,10 @@ MSG_HASH(
    "Kelataan taakse."
    )
 MSG_HASH(
+   MSG_REWIND_BUFFER_CAPACITY_INSUFFICIENT,
+   "Puskurin kapasiteetti on riittämätön."
+   )
+MSG_HASH(
    MSG_REWIND_UNSUPPORTED,
    "Takaisinkelaus ei saatavilla, sillä tämä ydin ei tue tilatallennuksia."
    )
@@ -13230,6 +13056,10 @@ MSG_HASH(
 MSG_HASH(
    MSG_VIRTUAL_DISK_TRAY_CLOSE,
    "Virtuaalisen levyaseman sulkeminen epäonnistui."
+   )
+MSG_HASH(
+   MSG_AUTOLOADING_SAVESTATE_FROM,
+   "Tilan lataaminen kohteesta"
    )
 MSG_HASH(
    MSG_AUTOLOADING_SAVESTATE_FAILED,
@@ -13498,6 +13328,10 @@ MSG_HASH(
 MSG_HASH(
    MSG_CHEEVOS_NUMBER_ACHIEVEMENTS_UNLOCKED,
    "Olet avannut %d/%d saavutusta"
+)
+MSG_HASH(
+   MSG_CHEEVOS_UNSUPPORTED_WARNING,
+   "Ei-tuettuja saavutuksia havaittu. Kokeile toista ydintä tai päivitä RetroArch."
 )
 MSG_HASH(
    MSG_RESAMPLER_QUALITY_LOWEST,
@@ -14116,6 +13950,10 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_TIMEZONE,
    "Valitse aikavyöhyke, jotta voit määrittää sijaintisi päivämäärän ja ajan."
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_HELP_TIMEZONE,
+   "Näyttää luettelon käytettävissä olevista aikavyöhykkeistä. Aikavyöhykkeen valitsemisen jälkeen aika ja päivämäärä on säädetään valittuun aikavyöhykkeeseen. Perusoletus on, että järjestelmän / laitteiston kello on asetettu UTC-aikaan."
+   )
 #ifdef HAVE_LAKKA_SWITCH
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LAKKA_SWITCH_OPTIONS,
@@ -14344,3 +14182,10 @@ MSG_HASH(
    MSG_AI_SERVICE_STOPPED,
    "pysäytetty."
    )
+#ifdef HAVE_GAME_AI
+
+
+
+
+
+#endif

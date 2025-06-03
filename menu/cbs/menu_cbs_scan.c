@@ -113,6 +113,7 @@ int action_scan_directory(const char *path,
 }
 #endif
 
+extern int action_cycle_thumbnail(unsigned mode);
 int action_switch_thumbnail(const char *path,
       const char *label, unsigned type, size_t idx)
 {
@@ -124,61 +125,20 @@ int action_switch_thumbnail(const char *path,
 #ifdef HAVE_RGUI
    switch_enabled             = !string_is_equal(menu_ident, "rgui");
 #endif
-#ifdef HAVE_MATERIALUI
-   switch_enabled             = switch_enabled && !string_is_equal(menu_ident, "glui");
-#endif
 
    if (!settings)
       return -1;
 
    /* RGUI has its own cycling for thumbnails in order to allow
     * cycling all images in fullscreen mode.
-    * GLUI is a special case where thumbnail 'switch' corresponds to
-    * changing thumbnail view mode.
     * For other menu drivers, we cycle through available thumbnail
     * types and skip if already visible. */
    if (switch_enabled)
    {
-      if (settings->uints.gfx_thumbnails == 0)
-      {
-         configuration_set_uint(settings,
-               settings->uints.menu_left_thumbnails,
-               settings->uints.menu_left_thumbnails + 1);
-
-         if (settings->uints.gfx_thumbnails == settings->uints.menu_left_thumbnails)
-            configuration_set_uint(settings,
-                  settings->uints.menu_left_thumbnails,
-                  settings->uints.menu_left_thumbnails + 1);
-
-         if (settings->uints.menu_left_thumbnails > 3)
-            configuration_set_uint(settings,
-                  settings->uints.menu_left_thumbnails, 1);
-
-         if (settings->uints.gfx_thumbnails == settings->uints.menu_left_thumbnails)
-            configuration_set_uint(settings,
-                  settings->uints.menu_left_thumbnails,
-                  settings->uints.menu_left_thumbnails + 1);
-      }
+      if (settings->uints.gfx_thumbnails)
+         action_cycle_thumbnail(MENU_ACTION_CYCLE_THUMBNAIL_PRIMARY);
       else
-      {
-         configuration_set_uint(settings,
-               settings->uints.gfx_thumbnails,
-               settings->uints.gfx_thumbnails + 1);
-
-         if (settings->uints.gfx_thumbnails == settings->uints.menu_left_thumbnails)
-            configuration_set_uint(settings,
-                  settings->uints.gfx_thumbnails,
-                  settings->uints.gfx_thumbnails + 1);
-
-         if (settings->uints.gfx_thumbnails > 3)
-            configuration_set_uint(settings,
-                  settings->uints.gfx_thumbnails, 1);
-
-         if (settings->uints.gfx_thumbnails == settings->uints.menu_left_thumbnails)
-            configuration_set_uint(settings,
-                  settings->uints.gfx_thumbnails,
-                  settings->uints.gfx_thumbnails + 1);
-      }
+         action_cycle_thumbnail(MENU_ACTION_CYCLE_THUMBNAIL_PRIMARY);
 
       if (menu_st->driver_ctx)
       {

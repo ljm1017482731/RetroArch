@@ -540,10 +540,6 @@ MSG_HASH(
    "قفل کردن هستهٔ نصب‌شده"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "از ایجاد تغییر در هستهٔ نصب‌شدهٔ فعلی جلوگیری کنید. ممکن است برای جلوگیری از به‌روزرسانی‌های ناخواسته در زمانی که محتوا به نسخهٔ خاصی از هسته نیاز داشته باشد مفید باشد (مثلاً ROM های آرکید)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_SET_STANDALONE_EXEMPT,
    "از گزینگان «هسته‌های بدون محتوا» حذف کن"
    )
@@ -1365,10 +1361,6 @@ MSG_HASH(
    "کاربر"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "تنظیمات حساب، نام کاربری و زبان."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "پوشه"
    )
@@ -1431,10 +1423,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "ورودی"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "درایور ورودی برای استفاده. بعضی از درایورهای ویدیویی، یک درایور ورودی متفاوت را اجبار می‌کنند."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_INPUT_DRIVER_NO_DETAILS,
@@ -2093,10 +2081,6 @@ MSG_HASH(
    "صدای ترکیب‌کننده را ساکت کنید."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_MUTE,
-   "ساکت کردن در زمان جلو کشیدن تصویر"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_DSP_PLUGIN,
    "افزونهٔ DSP"
    )
@@ -2301,6 +2285,7 @@ MSG_HASH(
    MSG_INPUT_BIND_HOLD,
    "تعلیق"
    )
+
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
    "حالت توربو"
@@ -2324,10 +2309,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_TURBO_MODE_SINGLEBUTTON_HOLD,
    "یک دکمه (نگه داشتن)"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "دکمهٔ پیشفرض توربو"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_HOTKEY_BINDS,
@@ -2368,16 +2349,8 @@ MSG_HASH(
    "غیرفعال کردن دکمهٔ اطلاعات"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_INFO_BUTTON,
-   "اگر فعال باشد، فشرده شدن دکمهٔ اطلاعات نادیده گرفته می‌شود."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DISABLE_SEARCH_BUTTON,
    "غیرفعال‌سازی دکمهٔ جستجو"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_SEARCH_BUTTON,
-   "اگر فعال باشد، فشرده شدن دکمهٔ جستجو نادیده گرفته می‌شود."
    )
 
 /* Settings > Input > Hotkeys */
@@ -2460,7 +2433,6 @@ MSG_HASH(
    )
 
 
-
 /* Settings > Input > Port # Controls */
 
 MSG_HASH(
@@ -2510,10 +2482,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_LIGHTGUN_RELOAD,
    "خشاب تفنگ"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
-   "توربو (سرعتی)"
    )
 
 /* Settings > Latency */
@@ -2972,7 +2940,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "مرورگر فایل"
+   "مسیر شروع"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CONTENT_DATABASE_DIRECTORY,
@@ -3531,6 +3499,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -3674,10 +3644,6 @@ MSG_HASH(
    "ذخیرهٔ ضبط‌ها در پوشهٔ خروجی"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RESUME,
-   "ادامه"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ENABLE,
    "بازی تحت شبکه"
    )
@@ -3811,4 +3777,11 @@ MSG_HASH(
    )
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

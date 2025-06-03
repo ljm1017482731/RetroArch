@@ -436,10 +436,6 @@ MSG_HASH(
    "Lås installeret kerne"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Forhindre ændring af den aktuelt installerede kerne. Kan bruges til at undgå uønskede opdateringer, når indhold kræver en bestemt kerneversion (f.eks Arcade ROM sæt)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_DELETE,
    "Slet kerne"
    )
@@ -841,10 +837,6 @@ MSG_HASH(
    "Bruger"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Skift konto, brugernavn og sprogindstillinger."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Mappe"
    )
@@ -860,10 +852,6 @@ MSG_HASH(
 
 /* Settings > Drivers */
 
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Input driver til brug. Nogle videodrivere tvinger en anden inputdriver."
-   )
 
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_DRIVER,
@@ -1022,6 +1010,7 @@ MSG_HASH(
 #ifdef ANDROID
 #endif
 
+
 /* Settings > Input > Haptic Feedback/Vibration */
 
 
@@ -1046,7 +1035,6 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_AI_SERVICE,
    "AI Tjeneste"
    )
-
 
 
 /* Settings > Input > Port # Controls */
@@ -1216,7 +1204,7 @@ MSG_HASH(
 
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Filhåndtering"
+   "Start Mappe"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
@@ -1355,6 +1343,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -1463,4 +1453,11 @@ MSG_HASH(
 #ifdef _3DS
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

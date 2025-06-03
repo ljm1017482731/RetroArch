@@ -504,10 +504,6 @@ MSG_HASH(
    "Geïnstalleerde Core Vergrendelen"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Voorkom wijziging van de huidige geïnstalleerde core. Kan worden gebruikt om ongewenste updates te voorkomen wanneer inhoud een specifieke core-versie vereist (bijv. Arcade ROM-sets)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_SET_STANDALONE_EXEMPT,
    "Uitsluiten van 'inhoudloze Cores' menu"
    )
@@ -1269,10 +1265,6 @@ MSG_HASH(
    "Gebruiker"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Wijzig account-, gebruikersnaam- en taalinstellingen."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Map"
    )
@@ -1315,10 +1307,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "Invoer"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Invoersstuurprogramma om te gebruiken. Sommige videostuurprogramma's dwingen een ander ingangsstuurprogramma af."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_INPUT_DRIVER_LINUXRAW,
@@ -2257,16 +2245,8 @@ MSG_HASH(
    "Demp audio van mixer."
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_MUTE,
-   "Dempen bij Vooruitspoelen"
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_MUTE,
    "Audio automatisch dempen bij gebruik van Vooruitspoelen."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_SPEEDUP,
-   "Versnelling bij snel vooruitspoelen"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_SPEEDUP,
@@ -2709,21 +2689,14 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_BIND_HOLD,
    "Aantal seconden om een invoer vast te houden om deze te binden."
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "Turbo-vuur"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_PERIOD,
    "Turbo Periode"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_PERIOD,
-   "De periode (in frames) wanneer turbo-ingeschakelde knoppen worden ingedrukt."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_DUTY_CYCLE,
-   "Turbo Duty Cyclus"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DUTY_CYCLE,
-   "Het aantal frames uit de Turbo-periode waarvoor de knoppen worden ingedrukt. Als dit aantal gelijk is aan of groter is dan de Turbo-periode, zullen de knoppen nooit loslaten."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
@@ -2744,22 +2717,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_TURBO_MODE_SINGLEBUTTON_HOLD,
    "Enkelvoudige knop (Vasthouden)"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_HELP_TURBO_MODE_CLASSIC,
-   "Klassieke modus, twee-knop bewerking. Houd een knop ingedrukt en druk op de Turbo knop om de indrukken-loslaten sequentie te activeren.\nTurbo knop kan worden toegewezen in Instellingen/Invoer/Poort 1 Controls."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_HELP_TURBO_MODE_SINGLEBUTTON,
-   "Omschakelen modus. Druk eenmaal op de Turbo knop om de indrukken-loslaten sequentie voor de geselecteerde standaard knop te activeren, druk opnieuw op de knop om deze uit te schakelen.\nTurbo knop kan worden toegewezen in Instellingen/Invoer/Poort 1 Controls."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "Turbo Standaardknop"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_DEFAULT_BUTTON,
-   "Standaard actieve knop voor Turbo Modus 'Enkele Knop'."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_FIRE_SETTINGS,
@@ -2836,16 +2793,8 @@ MSG_HASH(
    "Infoknop uitschakelen"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_INFO_BUTTON,
-   "Indien ingeschakeld worden Info-toetsen genegeerd."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DISABLE_SEARCH_BUTTON,
    "Zoekknop uitschakelen"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DISABLE_SEARCH_BUTTON,
-   "Indien ingeschakeld wordt het indrukken van zoekknoppen genegeerd."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_INPUT_SWAP_OK_CANCEL,
@@ -2897,10 +2846,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_MENU_TOGGLE,
    "Menu-schakel"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_MENU_TOGGLE,
-   "Schakelt de huidige weergave tussen het menu en de actieve inhoud."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_QUIT_GAMEPAD_COMBO,
@@ -2977,10 +2922,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
    "Pauzeren"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_PAUSE_TOGGLE,
-   "Schakelt om inhoud uit te voeren tussen onderbroken en niet-onderbroken staten."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_FRAMEADVANCE,
@@ -3274,15 +3215,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_META_NETPLAY_FADE_CHAT_TOGGLE,
    "Schakelen tussen vervagende en statische net-play-chatberichten."
-   )
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "Stuur Foutopsporings-info (Debug Info)"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_SEND_DEBUG_INFO,
-   "Stuurt diagnostische informatie over uw apparaat en RetroArch-configuratie naar onze servers voor analyse."
    )
 
 /* Settings > Input > Port # Controls */
@@ -3736,10 +3668,6 @@ MSG_HASH(
    "Automatisch Slaan de Staat op"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_SAVESTATE_AUTO_SAVE,
-   "Automatisch een slagstaat maken wanneer inhoud wordt gesloten. RetroArch zal deze slagstaat automatisch laden als 'Staat Automatisch Laden' is ingeschakeld."
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_SAVESTATE_AUTO_LOAD,
    "Laad de slagstaat automatisch bij het opstarten."
    )
@@ -3882,16 +3810,16 @@ MSG_HASH(
    "Filtreer onbekende extensies"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_PLAYER,
-   "Gebruik ingebouwde media speler"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_FILTER_BY_CURRENT_CORE,
    "Filter op Huidige Core"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_USE_LAST_START_DIRECTORY,
    "Onthoud de Laatst Gebruikte Startmap"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_USE_BUILTIN_PLAYER,
+   "Gebruik ingebouwde media speler"
    )
 
 /* Settings > Frame Throttle */
@@ -4832,10 +4760,6 @@ MSG_HASH(
    "Toon 'Geschiedenis'"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD,
-   "Toon 'Inhoud importeren'"
-   )
-MSG_HASH( /* FIXME can now be replaced with MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD */
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD_ENTRY,
    "Toon 'Inhoud importeren'"
    )
@@ -5156,7 +5080,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Bestandsbeheer"
+   "Favorieten"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
@@ -5862,6 +5786,7 @@ MSG_HASH(
 
 /* Ozone: Settings > User Interface > Appearance */
 
+
 MSG_HASH(
    MENU_ENUM_SUBLABEL_OZONE_MENU_COLOR_THEME,
    "Selecteer een ander kleurenschema."
@@ -5874,6 +5799,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OZONE_COLOR_THEME_BASIC_BLACK,
    "Zwart"
    )
+
 
 /* MaterialUI: Settings > User Interface > Appearance */
 
@@ -6106,16 +6032,8 @@ MSG_HASH(
 /* Unused (Only Exist in Translation Files) */
 
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_AUTO,
-   "Automatische Beeldverhouding"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_BGM_ENABLE,
    "Systeem BGM Activeren"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CUSTOM_RATIO,
-   "Handmatige Beeldverhouding"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RECORD_ENABLE,
@@ -6128,14 +6046,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RECORD_USE_OUTPUT_DIRECTORY,
    "Gebruik Uitvoer Map"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FORCE_ASPECT,
-   "Forceer beeldverhouding"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RESUME,
-   "Hervatten"
    )
 MSG_HASH( /* FIXME Still exists in a comment about being removed */
    MENU_ENUM_LABEL_VALUE_MATERIALUI_MENU_FOOTER_OPACITY,
@@ -6164,14 +6074,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_HELP_LOADING_CONTENT,
    "Hoe Laad je Content?"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "Stuur Foutopsporings-info (Debug Info)"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_HELP_SEND_DEBUG_INFO,
-   "Stuurt diagnostische informatie over uw apparaat en RetroArch-configuratie naar onze servers voor analyse."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANAGEMENT,
@@ -6763,4 +6665,11 @@ MSG_HASH(
    )
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

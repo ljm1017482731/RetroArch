@@ -520,10 +520,6 @@ MSG_HASH(
    "Uzamknúť Nainštalované Jadro"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Zabráňte úprave aktuálne nainštalovaného jadra. Môže sa použiť na zabránenie nechceným aktualizáciám, keď obsah vyžaduje špecifickú verziu jadra (napr. Sady Arcade ROM)."
-   )
-MSG_HASH(
    MENU_ENUM_SUBLABEL_CORE_SET_STANDALONE_EXEMPT,
    "Zabrániť zobrazeniu tohto jadra na karte/ponuke 'Jadrá bez obsahu'. Platí iba v prípade, že je režim zobrazenia nastavený na 'Vlastný'."
    )
@@ -1325,10 +1321,6 @@ MSG_HASH(
    "Používateľ"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Zmeniť účet, užívateľské meno a nastavenie jazyka."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Priečinok"
    )
@@ -1387,10 +1379,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_DRIVER,
    "Vstup"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DRIVER,
-   "Používaný vstupný ovládač. Niektoré ovládače videa vynucujú iný vstupný ovládač."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_JOYPAD_DRIVER,
@@ -2401,21 +2389,14 @@ MSG_HASH(
    MSG_INPUT_BIND_HOLD,
    "Držať"
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "Rýchlo streľba"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_PERIOD,
    "Turbo režim"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_PERIOD,
-   "Čas (v snímkoch), keď sú stlačené tlačidlá s funkciou turbo."
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_DUTY_CYCLE,
-   "Prevádzkový cyklus turba"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_DUTY_CYCLE,
-   "Počet snímok z režimu Turbo, počas ktorého sa tlačidlá držia stlačené. Ak je toto číslo rovné alebo väčšie ako interval Turbo, tlačidlá sa nikdy neuvoľnia."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_MODE,
@@ -2436,14 +2417,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_TURBO_MODE_SINGLEBUTTON_HOLD,
    "Jedno tlačidlo (držať)"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_DEFAULT_BUTTON,
-   "Predvolené tlačidlo Turbo"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_TURBO_DEFAULT_BUTTON,
-   "Predvolené tlačidlo pre režim Turbo \"Jedno tlačidlo\"."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_FIRE_SETTINGS,
@@ -2537,10 +2510,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_PAUSE_TOGGLE,
    "Pauza"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_PAUSE_TOGGLE,
-   "Zapína/vypína pozastavenie bežiaceho obsahu."
    )
 
 MSG_HASH(
@@ -2655,15 +2624,6 @@ MSG_HASH(
    "Služba AI"
    )
 
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "Odoslať ladiace informácie"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_INPUT_META_SEND_DEBUG_INFO,
-   "Odoslať diagnostické informácie o zariadení a nastaveniach RetroArch na naše serveri na analýzu."
-   )
 
 /* Settings > Input > Port # Controls */
 
@@ -3364,16 +3324,8 @@ MSG_HASH(
    "Zobraziť 'História'"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD,
-   "Zobraziť 'Importovať obsah'"
-   )
-MSG_HASH( /* FIXME can now be replaced with MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD */
    MENU_ENUM_LABEL_VALUE_CONTENT_SHOW_ADD_ENTRY,
    "Zobraziť 'Importovať obsah'"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_CONTENT_SHOW_ADD_ENTRY,
-   "Zobraziť položku 'Importovať obsah' v hlavnej ponuke alebo ponuke hracích zoznamov."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_ADD_CONTENT_ENTRY_DISPLAY_MAIN_TAB,
@@ -4128,7 +4080,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "Správca súborov"
+   "Hlavný adresár"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LIBRETRO_DIR_PATH,
@@ -4653,10 +4605,6 @@ MSG_HASH(
 
 /* Quick Menu > Options > Manage Core Options */
 
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CORE_OPTIONS_RESET,
-   "Vynulovať voľby"
-   )
 
 /* - Legacy (unused) */
 
@@ -5547,8 +5495,25 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_FAMICOM_RED,
    "Rodinná červená"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_GRAY_DARK,
+   "Šedá tmavá"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_XMB_MENU_COLOR_THEME_GRAY_LIGHT,
+   "Šedá svetlá"
+   )
 
 /* Ozone: Settings > User Interface > Appearance */
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_LEFT_THUMBNAILS_OZONE,
+   "Sekundárna miniatúra"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_OZONE_THUMBNAIL_SCALE_FACTOR,
+   "Mierka zväčšenia miniatúry"
+   )
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OZONE_MENU_COLOR_THEME,
@@ -5578,14 +5543,7 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OZONE_COLOR_THEME_GRAY_LIGHT,
    "Šedá svetlá"
    )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_LEFT_THUMBNAILS_OZONE,
-   "Sekundárna miniatúra"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_OZONE_THUMBNAIL_SCALE_FACTOR,
-   "Mierka zväčšenia miniatúry"
-   )
+
 
 /* MaterialUI: Settings > User Interface > Appearance */
 
@@ -6158,18 +6116,6 @@ MSG_HASH(
    "Stav"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_CUSTOM_RATIO,
-   "Vlastný pomer"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FORCE_ASPECT,
-   "Vynútiť pomer strán"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RESUME,
-   "Pokračovať"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEAT_DELETE_OPTION,
    "Vymazať túto zhodu"
    )
@@ -6196,14 +6142,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_HELP_WHAT_IS_A_CORE,
    "Čo je jadro?"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "Odoslať ladiace informácie"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_HELP_SEND_DEBUG_INFO,
-   "Odoslať diagnostické informácie o zariadení a nastaveniach RetroArch na naše serveri na analýzu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANAGEMENT,
@@ -6923,4 +6861,11 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_SCAN_FINISHED,
    "Skenovanie je dokončené.<br><br>\nAk chcete, aby bol obsah správne naskenovaný, musíte:\n<ul><li>mať už stiahnuté kompatibilné jadro</li>\n<li>mať aktualizované „Informačné súbory o jadre“ cez Online Updater</li>\n<li>aktualizovať \"Databázy\" cez Online Updater</li>\n<li>reštartovať RetroArch, ak ste práve vykonali čokoľvek z vyššie uvedeného</li></ul>\nNakoniec, obsah sa musí zhodovať s existujúcimi databázami z <a href=\"https://docs.libretro.com/guides/roms-playlists-thumbnails/#sources\">nachádyajúcimi sa tu</a>. Ak to stále nefunguje, <a href=\"https://www.github.com/libretro/RetroArch/issues\">odošlite hlásenie o chybe</a>."
    )
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

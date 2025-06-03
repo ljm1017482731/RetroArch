@@ -642,7 +642,13 @@ static ui_application_t ui_application_cocoa = {
    [self setupMainWindow];
 #endif
 
+#ifdef HAVE_QT
+   /* I think the draw observer should be absolutely fine for qt but I'm not testing it;
+    * whoever does test it and confirm it works can just delete this */
    [self performSelectorOnMainThread:@selector(rarch_main) withObject:nil waitUntilDone:NO];
+#else
+   rarch_start_draw_observer();
+#endif
 }
 
 #pragma mark - ApplePlatform
@@ -788,6 +794,7 @@ static ui_application_t ui_application_cocoa = {
 }
 #endif
 
+#ifdef HAVE_QT
 - (void) rarch_main
 {
     for (;;)
@@ -822,19 +829,21 @@ static ui_application_t ui_application_cocoa = {
 
     main_exit(NULL);
 }
+#endif
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification  { }
-- (void)applicationWillResignActive:(NSNotification *)notification { }
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+   apple_input_keyboard_reset();
+}
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication { return YES; }
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
    NSApplicationTerminateReply reply = NSTerminateNow;
-   uint32_t runloop_flags            = runloop_get_flags();
-
-   if (runloop_flags & RUNLOOP_FLAG_IS_INITED)
-      reply = NSTerminateCancel;
 
    command_event(CMD_EVENT_QUIT, NULL);
+
+   rarch_stop_draw_observer();
 
    return reply;
 }
@@ -918,16 +927,23 @@ static void open_document_handler(
    if (!result)
       return;
 
-   path_set(RARCH_PATH_CONTENT, state->result);
-
-   if (core_name)
+   if (filebrowser_get_type() == FILEBROWSER_SCAN_FILE)
+      action_scan_file(state->result, NULL, 0, 0);
+   else
    {
-      content_ctx_info_t content_info = {0};
-      task_push_load_content_with_current_core_from_companion_ui(
-            NULL,
-            &content_info,
-            CORE_TYPE_PLAIN,
-            NULL, NULL);
+      path_set(RARCH_PATH_CONTENT, state->result);
+
+      if (!string_is_empty(core_name))
+      {
+         content_ctx_info_t content_info = {0};
+         task_push_load_content_with_current_core_from_companion_ui(
+                                                                    NULL,
+                                                                    &content_info,
+                                                                    CORE_TYPE_PLAIN,
+                                                                    NULL, NULL);
+      }
+      else
+         cocoa_file_load_with_detect_core(state->result);
    }
 }
 

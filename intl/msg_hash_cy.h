@@ -444,10 +444,6 @@ MSG_HASH(
    "Cloi Craidd wedi'i osod"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_CORE_LOCK,
-   "Atal addasu'r craidd sydd wedi'i osod ar hyn o bryd. Gellir ei ddefnyddio i osgoi diweddariadau diangen pan fydd angen fersiwn graidd benodol ar y cynnwys (e.e. setiau Arcade ROM)."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_DELETE,
    "Dileu Craidd"
    )
@@ -957,10 +953,6 @@ MSG_HASH(
    "Defnyddiwr"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_USER_SETTINGS,
-   "Newid gosodiadau cyfrif, enw defnyddiwr a iaith."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
    "Cyfeiriadur"
    )
@@ -1082,6 +1074,7 @@ MSG_HASH(
    "ARNO"
    )
 
+
 /* Settings > Input > Haptic Feedback/Vibration */
 
 
@@ -1106,7 +1099,6 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_AI_SERVICE,
    "Gwasanaeth AI"
    )
-
 
 
 /* Settings > Input > Port # Controls */
@@ -1285,6 +1277,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_ASSETS_DIRECTORY,
    "Lawrlwythiadau"
+   )
+MSG_HASH( /* FIXME Not RGUI specific */
+   MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
+   "Cyfeiriadur Cychwynnol"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
@@ -1519,6 +1515,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -1743,4 +1741,11 @@ MSG_HASH(
 #ifdef _3DS
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif

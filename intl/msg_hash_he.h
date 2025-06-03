@@ -1325,6 +1325,11 @@ MSG_HASH(
    MSG_INPUT_BIND_HOLD,
    "החזק"
    )
+
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_TURBO_ENABLE,
+   "ירי טורבו"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_TURBO_PERIOD,
    "תקופת טורבו"
@@ -1399,11 +1404,6 @@ MSG_HASH(
    "שירות תרגום"
    )
 
-
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_INPUT_META_SEND_DEBUG_INFO,
-   "שלח נתוני ניפוי תקלות"
-   )
 
 /* Settings > Input > Port # Controls */
 
@@ -1576,7 +1576,7 @@ MSG_HASH(
    )
 MSG_HASH( /* FIXME Not RGUI specific */
    MENU_ENUM_LABEL_VALUE_RGUI_BROWSER_DIRECTORY,
-   "סייר קבצים"
+   "תיקיית ההתחלה"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_DIRECTORY,
@@ -1735,6 +1735,8 @@ MSG_HASH(
 /* Ozone: Settings > User Interface > Appearance */
 
 
+
+
 /* MaterialUI: Settings > User Interface > Appearance */
 
 
@@ -1814,10 +1816,6 @@ MSG_HASH(
    "עזרה"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_HELP_SEND_DEBUG_INFO,
-   "שלח נתוני ניפוי תקלות"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEEVOS_DESCRIPTION,
    "תיאור"
    )
@@ -1887,4 +1885,11 @@ MSG_HASH(
 #ifdef _3DS
 #endif
 #ifdef HAVE_QT
+#endif
+#ifdef HAVE_GAME_AI
+
+
+
+
+
 #endif
